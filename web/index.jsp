@@ -38,9 +38,9 @@
     </head>
     <body>
 
-        
 
-       
+
+
         <!-- END nav -->
 
         <div class="hero-wrap" style="background-image: url('image/PIC.jpg');" data-stellar-background-ratio="0.5">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </section>
-
+<!--
         <section class="ftco-section ftco-no-pb">
             <div class="container">
                 <div class="row">
@@ -99,7 +99,8 @@
                             <h3>Sorbets</h3>
                         </div>
                     </div>
-                
+                    -->
+
 
                 </div>
             </div>
@@ -114,21 +115,20 @@
                     </div>
                 </div>
                 <div class="row">
-                    
+
                     <%for (int x = 0; x < 4; x++) {%>
                     <div class="col-md-3 d-flex">
                         <div class="product ftco-animate">                          
                             <div class="img d-flex align-items-center justify-content-center" style="background-image: url(<%= iceCreamList.get(x).getIceCreamImage()%>);">
                                 <div class="desc">
-                                    <p class="meta-prod d-flex">
-                                        <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                                        <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+                                    <p class="meta-prod d-flex">                                        
+                                        <a href="<%="icecreamDetails.jsp?ID=" + iceCreamList.get(x).getIcecreamID()%>" class= "d-flex align-items-center justify-content-center"> <span class="flaticon-visibility"></span></a>
                                     </p>
                                 </div>
                             </div>
                             <div class="text text-center">  
                                 <span class="seller">Best Seller</span>
-                                 <span class="category"><%= iceCreamList.get(x).getIceCreamType()%></span>
+                                <span class="category"><%= iceCreamList.get(x).getIceCreamType()%></span>
                                 <h2><%= iceCreamList.get(x).getIceCreamName()%></h2>
                                 <span class="price">RM<%= iceCreamList.get(x).getIceCreamPrice()%>0</span>
                             </div>
