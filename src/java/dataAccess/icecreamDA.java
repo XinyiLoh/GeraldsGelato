@@ -1,6 +1,6 @@
 package dataAccess;
 
-import classes.IceCream;
+import domain.IceCream;
 import java.sql.*;
 import java.util.ArrayList;
 
