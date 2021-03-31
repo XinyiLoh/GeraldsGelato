@@ -22,6 +22,23 @@ public class icecreamDA {
         createConnection();
     }
 
+    public IceCream getIceCream(String iceCreamID) {
+        String queryStr = "SELECT * FROM " + tableName + " WHERE ID = ?";
+        IceCream iceCream = null;
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, iceCreamID);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                iceCream = new IceCream(iceCreamID, rs.getString("Name"), rs.getDouble("Price"), rs.getString("Description"), rs.getInt("Rating"), rs.getString("Image"), rs.getString("Type"), rs.getInt("Available"), rs.getString("Descl"), rs.getString("Ingrediants"));
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        return iceCream;
+    }
+
     public void addRecord(IceCream icecream) throws SQLException {
         createConnection();
         try {
