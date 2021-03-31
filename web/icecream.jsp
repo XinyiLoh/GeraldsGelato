@@ -9,6 +9,7 @@
 <%  //Declarations
     ArrayList<IceCream> iceCreamList = new ArrayList<IceCream>();
     icecreamDA da = new icecreamDA();
+    String type = request.getParameter("type");
 
     //Database Access
     iceCreamList = da.selectAllIceCream();
@@ -38,7 +39,6 @@
     </head>
     <body>
 
-
         <!-- END nav -->
 
         <section class="hero-wrap hero-wrap-2" style="background-image: url('image/PIC2.jpg');" data-stellar-background-ratio="0.5">
@@ -63,14 +63,16 @@
                             </div>
                         </div>
                         <div class="row">
+                            <%if (type != null) {%>
+                            <!-- Display Types -->
                             <%for (int x = 0; x < iceCreamList.size(); x++) {%>
+                            <%if (type.equals(iceCreamList.get(x).getIceCreamType())) {%>
                             <div class="col-md-4 d-flex">
                                 <div class="product ftco-animate">
                                     <div class="img d-flex align-items-center justify-content-center" style="background-image: url(<%= iceCreamList.get(x).getIceCreamImage()%>);">
                                         <div class="desc">
-                                            <p class="meta-prod d-flex">
-                                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-                                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+                                            <p class="meta-prod d-flex">                                                
+                                                <a href="<%="icecreamDetails.jsp?ID=" + iceCreamList.get(x).getIcecreamID()%>" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
                                             </p>
                                         </div>
                                     </div>
@@ -81,8 +83,31 @@
                                     </div>
                                 </div>
                             </div>
+                            <%}
+                                }%> 
 
-                            <%}%> 
+                            <%} else {%>
+                            <!-- Display All -->
+                            <%for (int x = 0; x < iceCreamList.size(); x++) {%>
+                            <div class="col-md-4 d-flex">
+                                <div class="product ftco-animate">
+                                    <div class="img d-flex align-items-center justify-content-center" style="background-image: url(<%= iceCreamList.get(x).getIceCreamImage()%>);">
+                                        <div class="desc">
+                                            <p class="meta-prod d-flex">                                                
+                                                <a href="<%="icecreamDetails.jsp?ID=" + iceCreamList.get(x).getIcecreamID()%>" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="text text-center">
+                                        <span class="category"><%= iceCreamList.get(x).getIceCreamType()%></span>
+                                        <h2><%= iceCreamList.get(x).getIceCreamName()%></h2>
+                                        <span class="price">RM<%= iceCreamList.get(x).getIceCreamPrice()%>0</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <%}%>
+                            <%}%>
+
                         </div>
 
                     </div>
@@ -92,10 +117,10 @@
                             <div class="categories">
                                 <h3>Product Types</h3>
                                 <ul class="p-0">
-                                    <li><a href="#">All <span class="fa fa-chevron-right"></span></a></li>
-                                    <li><a href="#">Classic <span class="fa fa-chevron-right"></span></a></li>
-                                    <li><a href="#">Sorbets <span class="fa fa-chevron-right"></span></a></li>
-                                    <li><a href="#">Frozen Yogurt <span class="fa fa-chevron-right"></span></a></li>
+                                    <li><a href="icecream.jsp">All <span class="fa fa-chevron-right"></span></a></li>
+                                    <li><a href="icecream.jsp?type=Classic">Classic <span class="fa fa-chevron-right"></span></a></li>
+                                    <li><a href="icecream.jsp?type=Sorbets">Sorbets <span class="fa fa-chevron-right"></span></a></li>
+                                    <li><a href="icecream.jsp?type=Frozen Yogurt">Frozen Yogurt <span class="fa fa-chevron-right"></span></a></li>
                                 </ul>
                             </div>
                         </div>
