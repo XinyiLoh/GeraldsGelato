@@ -25,10 +25,11 @@
         <table border="1" cellpadding="5">
             <h2>List of users</h2>
             <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Password</th>
+                <th>ID</th>
                 <th>Name</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Available</th>
             </tr>
         <% 
             for (int i = 0; i < displayProduct.size(); i++) {
