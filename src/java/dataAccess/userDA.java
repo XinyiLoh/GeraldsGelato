@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +23,7 @@ public class userDA {
     private final static String host = "jdbc:derby://localhost:1527/icecreamdb";
     private final static String user = "nbuser";
     private final static String password = "nbuser";
-    private final static String tableName = "icecream";
+    private final static String tableName = "users";
 
     private Connection conn;
     private PreparedStatement stmt;
@@ -93,6 +94,24 @@ public class userDA {
         } finally {
             shutDown();
         }
+    }
+
+    public ArrayList<User> selectAllUser() {
+        User user = new User();
+        ArrayList<User> userList = new ArrayList<User>();
+        String sqlQueryStr = "SELECT * from " + tableName;
+
+        try {
+            stmt = conn.prepareStatement(sqlQueryStr);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                userList.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+
+        return userList;
     }
 
     private void createConnection() {
