@@ -1,5 +1,10 @@
 package domain;
 
+/**
+ *
+ * @author Siah Xin Ying
+ */
+
 public class Cart {
 
     private String id;
