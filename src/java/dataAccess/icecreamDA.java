@@ -39,6 +39,25 @@ public class icecreamDA {
         return iceCream;
     }
 
+    public String getIceCreamName(String iceCreamName) {
+        String queryStr = "SELECT * FROM " + tableName + " WHERE Name = ?";
+        String id = "";
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, iceCreamName);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                id = rs.getString("ID");
+            } else {
+                id = "Nothing";
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        return id;
+    }
+
     public void addRecord(IceCream icecream) throws SQLException {
         createConnection();
         try {

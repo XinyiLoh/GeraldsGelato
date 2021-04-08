@@ -4,7 +4,7 @@
 --%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dataAccess.icecreamDA"%>
-<%@page import="classes.IceCream"%>
+<%@page import="domain.IceCream"%>
 <!-- Functions -->
 <%  //Declarations
     ArrayList<IceCream> iceCreamList = new ArrayList<IceCream>();
@@ -36,9 +36,11 @@
 
         <link rel="stylesheet" href="css/flaticon.css">
         <link rel="stylesheet" href="css/style.css">
+
+
     </head>
     <body>
-
+        <jsp:include page="header.jsp" />
         <!-- END nav -->
 
         <section class="hero-wrap hero-wrap-2" style="background-image: url('image/PIC2.jpg');" data-stellar-background-ratio="0.5">
@@ -54,6 +56,19 @@
         </section>
 
         <section class="ftco-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-3">
+                        <form action="searchServlet" method="post" class="search-form">
+                            <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <input type="text" class="form-control" name="search" id="search" placeholder="Search">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
@@ -147,8 +162,11 @@
         <script src="js/scrollax.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="js/google-map.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
+        <jsp:include page="footer.jsp" />
     </body>
+
+
 </html>
