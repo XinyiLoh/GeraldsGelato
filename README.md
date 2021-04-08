@@ -31,6 +31,25 @@ PRIMARY KEY (ID));
 
 CREATE TABLE CART (ID VARCHAR(5), "NAME" VARCHAR(30), PRICE DOUBLE, IMAGE VARCHAR(20), QUANTITY INTEGER);
 
+CREATE TABLE PAYMENT (
+	PAYMENT_ID VARCHAR(15) NOT NULL,
+	PAYMENT_AMOUNT DOUBLE NOT NULL,
+	PAYMENT_DATE DATE,
+	PAYMENT_MODE VARCHAR(30),
+PRIMARY KEY(PAYMENT_ID));
+
+CREATE TABLE CUSTOMER (
+	CUST_ID VARCHAR(15) NOT NULL,
+	FIRSTNAME VARCHAR(255),
+	LASTNAME VARCHAR(255) NOT NULL,
+	ADDRESS VARCHAR(255),
+	CITY VARCHAR(30),
+	STATE VARCHAR(30),
+	POSTCODE INTEGER,
+	EMAIL VARCHAR(255),
+	PHONE VARCHAR(12),
+PRIMARY KEY(CUST_ID));
+
 INSERT INTO NBUSER.ICECREAM (ID, "NAME", PRICE, DESCRIPTION, RATING, IMAGE, "TYPE", AVAILABLE, DESCL, INGREDIANTS) 
 	VALUES ('001', 'Cotton Candy', 11.0, 'A swirl of pink & purple cotton candy ice cream', 5, 'image/IC1.jpg', 'Classic', 20, 'A creamier and dreamier version of your favorite fluffy, puffy treat. Swirled in pink and purple, for extra cuteness.', 'Cream, Nonfat Milk, Cotton Candy Base (Corn Syrup, Water, Sugar, Flavoring, Sodium Citrate, Citric Acid), Sugar, Corn Syrup, Whey, Artificial Color (Red 3, Blue 1, Red 40), Cellulose Gum, Mono and Diglycerides, Guar Gum, Carrageenan, Polysorbate 80.');
 INSERT INTO NBUSER.ICECREAM (ID, "NAME", PRICE, DESCRIPTION, RATING, IMAGE, "TYPE", AVAILABLE, DESCL, INGREDIANTS) 
