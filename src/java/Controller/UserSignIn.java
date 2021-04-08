@@ -1,15 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
+import dataAccess.userDA;
+import domain.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Loh Xin Yi
  */
-@WebServlet(name = "UserLogout", urlPatterns = {"/UserLogout"})
-public class UserLogout extends HttpServlet {
+public class UserSignIn extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +32,34 @@ public class UserLogout extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession(false);
+            String email = request.getParameter("email").trim();
+            String password = request.getParameter("password").trim();
 
-            //Delete the session if session is set
-            if (session != null) {
-                session.invalidate();
-            }
+            User user = userDA.getRecordByEmailAndPassword(email, password);
             RequestDispatcher rd = request.getRequestDispatcher("UserLogin.jsp");
-            out.println("<font color=green>Logout Successfully!</font>");
-            rd.include(request, response);
+            if (user == null) {
 
+                if (userDA.getRecordByEmail(email) == null) {
+                    out.println("<font color=red>Email is incorrect.</font>");
+                    rd.include(request, response); //send message to the UserLogin.jsp
+                } else {
+                    out.println("<font color=red>Password is incorrect.</font>");
+                    rd.include(request, response);
+                }
+            } else {
+                HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                session.setMaxInactiveInterval(60 * 60); //session expiry in 1 hour
+
+                if (user.getRole().equals("user")) {
+                    response.sendRedirect("index.jsp");
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(UserRegistration.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

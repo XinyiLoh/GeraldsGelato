@@ -1,5 +1,5 @@
-<%@page import="entity.Users" %>
-<jsp:useBean id="user" class="entity.Users" scope="session"></jsp:useBean>
+<%@page import="domain.User" %>
+<jsp:useBean id="user" class="domain.User" scope="session"></jsp:useBean>
 
 
 <html>
@@ -11,22 +11,11 @@
 <%
 //allow access only if session exists
 if(session.getAttribute("user") == null){
-	response.sendRedirect("login.jsp");
-}else user =(Users) session.getAttribute("user");
-String userName = null;
-String sessionID = null;
-Cookie[] cookies = request.getCookies();
-if(cookies !=null){
-for(Cookie cookie : cookies){
-	if(cookie.getName().equals("user")) userName = cookie.getValue();
-	if(cookie.getName().equals("JSESSIONID")) sessionID = cookie.getValue();
-}
-}
-
+	response.sendRedirect("UserLogin.jsp");
+}else user =(User) session.getAttribute("user");
 %>
-<h3>Hi <%=userName %>, Login successful. Your Session ID=<%=sessionID %></h3>
 <br>
-User=<%=user.getName()%>
+User=<%=user.getUsername()%>
 <br>
 <a href="admin/CheckOut.jsp">Go to admin page</a><br>
 <a href="user/CheckOut.jsp">Go to user page</a>
