@@ -51,9 +51,9 @@ CREATE TABLE CUSTOMER (
 PRIMARY KEY(CUST_ID));
 
 INSERT INTO NBUSER.USERS (USERNAME, EMAIL, PASSWORD, "ROLE") 
-	VALUES ('admin', 'admin@mail.com', 'admin', 'admin')
+	VALUES ('admin', 'admin@mail.com', 'admin', 'admin');
 INSERT INTO NBUSER.USERS (USERNAME, EMAIL, PASSWORD, "ROLE") 
-	VALUES ('user', 'user@mail.com', 'user', 'user')
+	VALUES ('user', 'user@mail.com', 'user', 'user');
 
 INSERT INTO NBUSER.ICECREAM (ID, "NAME", PRICE, DESCRIPTION, RATING, IMAGE, "TYPE", AVAILABLE, DESCL, INGREDIANTS) 
 	VALUES ('001', 'Cotton Candy', 11.0, 'A swirl of pink & purple cotton candy ice cream', 5, 'image/IC1.jpg', 'Classic', 20, 'A creamier and dreamier version of your favorite fluffy, puffy treat. Swirled in pink and purple, for extra cuteness.', 'Cream, Nonfat Milk, Cotton Candy Base (Corn Syrup, Water, Sugar, Flavoring, Sodium Citrate, Citric Acid), Sugar, Corn Syrup, Whey, Artificial Color (Red 3, Blue 1, Red 40), Cellulose Gum, Mono and Diglycerides, Guar Gum, Carrageenan, Polysorbate 80.');
