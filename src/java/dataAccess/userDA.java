@@ -11,7 +11,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,14 +24,15 @@ public class userDA {
     private final static String password = "nbuser";
     private final static String tableName = "users";
 
-    private Connection conn;
-    private PreparedStatement stmt;
+    private static Connection conn;
+    private static PreparedStatement stmt;
 
     public userDA() {
         createConnection();
     }
 
-    public void addRecord(User user) throws SQLException {
+    public static void addRecord(User user) throws SQLException {
+        createConnection();
         String insertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?, ?)";
         try {
             stmt = conn.prepareStatement(insertStr);
@@ -48,28 +48,66 @@ public class userDA {
         }
     }
 
-    public User getRecord(String code) {
-        String queryStr = "SELECT * FROM " + tableName + " WHERE Code = ?";
+    public static User getRecordByUsername(String username) {
+        createConnection();
+        String queryStr = "SELECT * FROM " + tableName + " WHERE username = ?";
         User user = null;
         try {
             stmt = conn.prepareStatement(queryStr);
-            stmt.setString(1, code);
+            stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                user = new User(code, rs.getString("Email"), rs.getString("Password"), rs.getString("Role"));
+                user = new User(username, rs.getString("Email"), rs.getString("Password"), rs.getString("Role"));
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            shutDown();
+            ex.getMessage();
+        }
+        return user;
+    }
+
+    public static User getRecordByEmail(String email) {
+        createConnection();
+        String queryStr = "SELECT * FROM " + tableName;
+        User user = null;
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                if (rs.getString("Email").equals(email)) {
+                    user = new User(rs.getString("Username"), email, rs.getString("Password"), rs.getString("Role"));
+                }
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        return user;
+    }
+
+    public static User getRecordByEmailAndPassword(String email, String password) {
+        createConnection();
+        String queryStr = "SELECT * FROM " + tableName;
+        User user = null;
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                if (rs.getString("Email").equals(email) && rs.getString("Password").equals(password)) {
+                    user = new User(rs.getString("Username"), email, password, rs.getString("Role"));
+                }
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
         }
         return user;
     }
 
     public void updateRecord(User user) {
+        createConnection();
         try {
-            String updateStr = "UPDATE " + tableName + " SET Name = ?, Faculty = ? " + " WHERE Code = ?";
+            String updateStr = "UPDATE " + tableName + " SET email = ?, password = ?, role = ? " + " WHERE username = ?";
             stmt = conn.prepareStatement(updateStr);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
@@ -83,11 +121,12 @@ public class userDA {
         }
     }
 
-    public void deleteRecord(String code) {
+    public void deleteRecord(String username) {
+        createConnection();
         try {
-            String deleteStr = "DELETE FROM " + tableName + " WHERE Code = ?";
+            String deleteStr = "DELETE FROM " + tableName + " WHERE username = ?";
             stmt = conn.prepareStatement(deleteStr);
-            stmt.setString(1, code);
+            stmt.setString(1, username);
             stmt.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -96,25 +135,7 @@ public class userDA {
         }
     }
 
-    public ArrayList<User> selectAllUser() {
-        User user = new User();
-        ArrayList<User> userList = new ArrayList<User>();
-        String sqlQueryStr = "SELECT * from " + tableName;
-
-        try {
-            stmt = conn.prepareStatement(sqlQueryStr);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                userList.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
-            }
-        } catch (SQLException ex) {
-            ex.getMessage();
-        }
-
-        return userList;
-    }
-
-    private void createConnection() {
+    private static void createConnection() {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection(host, user, password);
@@ -124,7 +145,7 @@ public class userDA {
         }
     }
 
-    private void shutDown() {
+    private static void shutDown() {
         if (conn != null) {
             try {
                 conn.close();
