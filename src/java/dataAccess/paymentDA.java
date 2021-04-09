@@ -23,7 +23,7 @@ public class paymentDA {
     private final static String host = "jdbc:derby://localhost:1527/icecreamdb";
     private final static String user = "nbuser";
     private final static String password = "nbuser";
-    private final static String tableName = "users";
+    private final static String tableName = "PAYMENT";
 
     private static Connection conn;
     private static PreparedStatement stmt;
@@ -66,11 +66,8 @@ public class paymentDA {
             stmt.executeUpdate();
             
         } catch (SQLException ex) {
-            
             throw ex;
-            
         } finally {
-            
             shutDown();
         }
     }
