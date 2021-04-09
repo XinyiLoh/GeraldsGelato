@@ -1,6 +1,8 @@
 <%@page import="dataAccess.cartDA"%>
 <%@page import="domain.Cart"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="domain.User" %>
+<jsp:useBean id="user" class="domain.User" scope="session"></jsp:useBean>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -13,7 +15,6 @@
 %>
 
 <body>
-
     <div class="wrap">
         <div class="container">
             <div class="row">
@@ -21,6 +22,7 @@
                     <p class="mb-0 phone pl-md-2">
                         <a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 0000 000</a> 
                         <a href="#"><span class="fa fa-paper-plane mr-1"></span> geraldsgelato@email.com</a>
+                        <a href="admin/adminHome.jsp">Admin Panel</a>
                     </p>
                 </div>
                 <div class="col-md-6 d-flex justify-content-md-end">
@@ -33,7 +35,20 @@
                         </p>
                     </div>
                     <div class="reg">
-                        <p class="mb-0"><a href="#" class="mr-2">Sign Up</a> <a href="#">Log In</a></p>
+                        <% 
+                            if(session.getAttribute("user") == null){
+                        %>
+                                <p class="mb-0"><a href="UserSignUp.jsp" class="mr-2">Sign Up</a> <a href="UserLogin.jsp">Log In</a></p>
+                        <%
+                            }else{ 
+                                user =(User) session.getAttribute("user");
+                        %>
+                                <form action="UserLogout" method="POST">
+                                    <button type="submit">Logout</button>
+                                </form>
+                        <%
+                            };
+                        %>
                     </div>
                 </div>
             </div>
@@ -88,7 +103,6 @@
         </div>
     </nav>
     <!-- END nav -->
-
 
 </body>
 </html>

@@ -1,6 +1,8 @@
 <%-- 
     Author     : Loh Xin Yi
 --%>
+<%@page import="domain.User" %>
+<jsp:useBean id="user" class="domain.User" scope="session"></jsp:useBean>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +34,23 @@
               width: 50%;
             }
         </style>
+
     </head>
     <body>
+
+        <%
+        //allow access only if session exists
+        if(session.getAttribute("user") == null){
+            response.sendRedirect("../UserLogin.jsp");
+        }else user =(User) session.getAttribute("user");
+        
+        if(!user.getRole().equals("admin")){
+            response.sendRedirect("../Error403.html");
+        }
+        %>
+
         <div class="wrap">
+            <h5>Hi <%=user.getUsername() %>, this is admin page.</h5>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center">
@@ -54,7 +70,9 @@
                         </p>
                     </div>
                     <div class="reg">
-                        <p class="mb-0"><a href="#" class="mr-2">Logout</a>
+                        <form action="../UserLogout" method="POST">
+                            <button type="submit"><span class="mr-2">Logout</span></button>
+                        </form>
                     </div>
                 </div>
             </div>

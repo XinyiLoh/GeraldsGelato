@@ -55,6 +55,8 @@ public class UserSignIn extends HttpServlet {
 
                 if (user.getRole().equals("user")) {
                     response.sendRedirect("index.jsp");
+                } else if (user.getRole().equals("admin")) {
+                    response.sendRedirect("admin/adminHome.jsp");
                 }
             }
 

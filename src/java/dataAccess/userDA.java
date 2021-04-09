@@ -75,7 +75,7 @@ public class userDA {
             stmt = conn.prepareStatement(queryStr);
             ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 if (rs.getString("Email").equals(email)) {
                     user = new User(rs.getString("Username"), email, rs.getString("Password"), rs.getString("Role"));
                 }
@@ -94,7 +94,7 @@ public class userDA {
             stmt = conn.prepareStatement(queryStr);
             ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 if (rs.getString("Email").equals(email) && rs.getString("Password").equals(password)) {
                     user = new User(rs.getString("Username"), email, password, rs.getString("Role"));
                 }
