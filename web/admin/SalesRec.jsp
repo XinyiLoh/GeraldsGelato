@@ -47,7 +47,7 @@
             
             <h1><b><u><center>Sales Record</center></u></b></h1>
             
-            <a href="PaymentDetail.jsp"><button style="margin-left: 90%" length="80%" type="button">Update Order Status</button></a><br/><br/>
+            <a href="UpdateOrderStatus.jsp"><button style="margin-left: 90%" length="80%" type="button">Update Order Status</button></a><br/><br/>
             
             <tr>
                 <th>Payment ID</th>
