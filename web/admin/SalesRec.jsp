@@ -66,9 +66,10 @@
                 <td><%= displayPayment.get(i).getPaymentDate() %></td>
                 <td><%= displayPayment.get(i).getPaymentAmount() %></td>
                 <td><%= displayPayment.get(i).getOrderStatus() %></td>
-                <td>.</td>
+                <td><a href="PaymentDetail.jsp?PAYMENT_ID=<%= displayPayment.get(i).getPaymentId() %>">Edit Status</a></td>
                 
             </tr>
+            
             <%
             }
             %>
