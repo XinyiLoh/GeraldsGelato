@@ -25,7 +25,7 @@
         <h2>List of Users</h2>
         <table border="1" cellpadding="5">
            
-            <button type="button"><a href="AddUser.jsp">Add User</a></button><br/><br/>
+            <a href="AddUser.jsp"><button type="button">Add User</button></a><br/><br/>
             <tr>
                 <th>Username</th>
                 <th>Email</th>

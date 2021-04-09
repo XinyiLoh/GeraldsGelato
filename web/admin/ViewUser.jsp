@@ -53,21 +53,21 @@
 </script>
 <%
         }
-}
+    }
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>View User</title>
     </head>
     <body>
         <h2>User Detail</h2>
-        <form>
+        <form action="ViewUser.jsp" method="POST">
             <table border="1" cellpadding="5">
                 <tr>               
                     <td>Username</td>
-                    <td><input type="text" name="username" value="<%= user.getUsername() %>" readonly=""></td>
+                    <td><input type="text" name="username" value="<%= user.getUsername() %>" readonly></td>
                 </tr>
                 <tr>               
                     <td>Email</td>

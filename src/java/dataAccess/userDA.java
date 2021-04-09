@@ -128,10 +128,10 @@ public class userDA {
         try {
             String updateStr = "UPDATE " + tableName + " SET email = ?, password = ?, role = ? " + " WHERE username = ?";
             stmt = conn.prepareStatement(updateStr);
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getEmail());
-            stmt.setString(3, user.getPassword());
-            stmt.setString(4, user.getRole());
+            stmt.setString(1, user.getEmail());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getRole());
+            stmt.setString(4, user.getUsername());
             stmt.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);

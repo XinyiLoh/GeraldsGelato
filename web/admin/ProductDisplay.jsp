@@ -25,7 +25,7 @@
         <h2>List of Products</h2>
         <table border="1" cellpadding="5">
             
-            <button type="button"><a href="AddProduct.jsp">Add Product</a></button><br/><br/>
+            <a href="AddProduct.jsp"><button type="button">Add Product</button></a><br/><br/>
             <tr>
                 <th>ID</th>
                 <th>Name</th>

@@ -11,20 +11,35 @@
     userDA da = new userDA();
     String username = request.getParameter("username");
     User user = da.getRecordByUsername(username);
-
+    
+    if(request.getParameter("cancel") != null){
+%>
+<script>
+        window.location.href='UserDisplay.jsp';
+</script>
+<%
+    }
+    
+    if(request.getParameter("submit") != null){
+        da.deleteRecord(username);
+%>
+<script>
+        alert('User detail deleted seccessfully.');
+        window.location.href='UserDisplay.jsp';
+</script>
+<%
+    }
 %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Delete User</title>
     </head>
     <body>
         <h2>User Detail</h2>
         <form>
             <table border="1" cellpadding="5">
-               
-                
                 <tr>               
                     <td>Username</td>
                     <td><input type="text" name="username" value="<%= user.getUsername() %>" readonly></td>
@@ -42,6 +57,10 @@
                     <td><input type="text" name="role" value="<%= user.getRole() %>" readonly></td>
                 </tr>
             </table>
+                <p>Note: Do you confirm Delete This Record?</p>
+                
+                <a href="UserDisplay.jsp"><button type="button" name="cancel">Cancel</button></a>
+                <button type="submit" name="submit">Delete</button>
         </form>
     </body>
 </html>

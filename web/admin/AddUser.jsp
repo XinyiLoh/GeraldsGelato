@@ -46,7 +46,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Add User</title>
     </head>
     <body>
         <h2>User Detail</h2>
