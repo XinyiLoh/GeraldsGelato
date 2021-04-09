@@ -24,48 +24,64 @@
         <title>Product Detail</title>
     </head>
     <body>
+        <h2>Product Detail</h2>
         <form>
             <table border="1" cellpadding="5">
-                <h2>Product Detail</h2>
+                
                 <tr>               
                     <td>ID</td>
-                    <td><input type="text" value="<%= iceCream.getIcecreamID() %>" readonly=""></td>
+                    <td><input type="text" name="id" value="<%= iceCream.getIcecreamID() %>" readonly=""></td>
                 </tr>
                 <tr>               
                     <td>Name</td>
-                    <td><input type="text" value="<%= iceCream.getIceCreamName() %>"></td>
+                    <td><input type="text" name="name" value="<%= iceCream.getIceCreamName() %>"></td>
                 </tr>
                 <tr>               
                     <td>Price</td>
-                    <td><input type="text" value=><%= iceCream.getIceCreamPrice() %></td>
+                    <td><input type="text" name="price" value="<%= iceCream.getIceCreamPrice() %>"></td>
                 </tr>
                 <tr>               
                     <td>Description</td>
-                    <td><input type="text" value=><%= iceCream.getIceCreamDescription() %></td>
+                    <td><textarea cols="40" rows="7" name="description"><%= iceCream.getIceCreamDescription() %></textarea></td>
                 </tr>
                 <tr>               
                     <td>Rating</td>
-                    <td><input type="text" value=><%= iceCream.getIceCreamRating() %></td>
+                    <td><select name="rating">
+                            <% 
+                                for (int i = 0; i <= 10; i++) {
+                                    if(i == iceCream.getIceCreamRating()){
+                            %>
+                                        <option value ="<%= i %>" selected=""><%= i %></option>
+                            <%
+                                    }
+                                    else{
+                            %>
+                                        <option value ="<%= i %>"><%= i %></option>
+                            <%
+                                    }
+                                }
+                            %>
+                    </select></td>
                 </tr>
                 <tr>               
                     <td>Image</td>
-                    <td><input type="file" value="<%= iceCream.getIceCreamImage() %>"></td>
+                    <td><input type="file" name="image"></td>
                 </tr>
                 <tr>               
                     <td>Type</td>
-                    <td><input type="text" value=><%= iceCream.getIceCreamName() %></td>
+                    <td><input type="text" name="type" value="<%= iceCream.getIceCreamType() %>"></td>
                 </tr>
                 <tr>               
                     <td>Available</td>
-                    <td><input type="text" value=><%= iceCream.getIceCreamName() %></td>
+                    <td><input type="text" name="available" value="<%= iceCream.getIceCreamAvailable() %>"></td>
                 </tr>
                 <tr>               
                     <td>Detail</td>
-                    <td><input type="text" value=><%= iceCream.getIceCreamName() %></td>
+                    <td><textarea cols="40" rows="7" name="detail"><%= iceCream.getIceCreamLongDesc() %></textarea></td>
                 </tr>
                 <tr>               
                     <td>Ingredients</td>
-                    <td><input type="text" value=><%= iceCream.getIceCreamName() %></td>
+                    <td><textarea cols="40" rows="7" name="ingredients"><%= iceCream.getIceCreamIngredients() %></textarea></td>
                 </tr>
             </table>
         </form>
