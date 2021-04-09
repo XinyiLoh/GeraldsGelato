@@ -22,8 +22,10 @@
         <title>User List</title>
     </head>
     <body>
+        <h2>List of Users</h2>
         <table border="1" cellpadding="5">
-            <h2>List of Users</h2>
+           
+            <button type="button"><a href="AddUser.jsp">Add User</a></button><br/><br/>
             <tr>
                 <th>Username</th>
                 <th>Email</th>
@@ -40,16 +42,12 @@
                     <td><%= displayUser.get(i).getEmail() %></td>
                     <td><%= displayUser.get(i).getPassword() %></td>
                     <td><%= displayUser.get(i).getRole() %></td>
-                    <td><a href="">View</a></td>
-                    <td><a href="">Delete</a></td>
+                    <td><a href="ViewUser.jsp?username=<%= displayUser.get(i).getUsername() %>">View</a></td>
+                    <td><a href="DeleteUser.jsp?username=<%= displayUser.get(i).getUsername() %>">Delete</a></td>
                 </tr>
          
          <%
             }
          %>
-            
-        <form action="" method="POST">
-            
-        </form>
     </body>
 </html>
