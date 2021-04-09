@@ -5,6 +5,18 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="dataAccess.paymentDA"%>
+<%@page import="domain.Payment"%>
+<%@page import="java.util.ArrayList"%>
+
+<!-- Functions -->
+<%  //Declarations
+    ArrayList<Payment> displayPayment = new ArrayList<Payment>();
+    paymentDA da = new paymentDA();
+
+    //Database Access
+    displayPayment = da.selectAllPayment();
+%>
 
 
 <!DOCTYPE html>
@@ -41,15 +53,25 @@
                 <th>Payment Date</th>
                 <th>Payment Amount</th>
                 <th>Order Status</th>
+                <th colspan="1">Action</th>
             </tr>
       
+            <% 
+            for (int i = 0; i < displayPayment.size(); i++){
+            %>
+            
             <tr>
-                <td>This</td>
-                <td>is just</td>
-                <td>a</td>
-                <td>test</td>
-                <td>Help me TAT</td>
+                <td><%= displayPayment.get(i).getPaymentId() %></td>
+                <td><%= displayPayment.get(i).getCustId() %></td>
+                <td><%= displayPayment.get(i).getPaymentDate() %></td>
+                <td><%= displayPayment.get(i).getPaymentAmount() %></td>
+                <td><%= displayPayment.get(i).getOrderStatus() %></td>
+                <td>.</td>
+                
             </tr>
+            <%
+            }
+            %>
          
        </table> 
         
