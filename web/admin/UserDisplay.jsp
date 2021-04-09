@@ -40,8 +40,8 @@
                     <td><%= displayUser.get(i).getEmail() %></td>
                     <td><%= displayUser.get(i).getPassword() %></td>
                     <td><%= displayUser.get(i).getRole() %></td>
-                    <td><a href="ViewUser.jsp?username=<%= displayUser.get(i).getUsername() %>">View</a></td>
-                    <td><a href="DeleteUser.jsp?username=<%= displayUser.get(i).getUsername() %>">Delete</a></td>
+                    <td><a href="">View</a></td>
+                    <td><a href="">Delete</a></td>
                 </tr>
          
          <%

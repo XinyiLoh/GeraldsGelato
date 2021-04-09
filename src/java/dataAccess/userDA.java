@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -102,6 +103,24 @@ public class userDA {
             ex.getMessage();
         }
         return user;
+    }
+
+    public ArrayList<User> displayAllUser() {
+        User user = new User();
+        ArrayList<User> userList = new ArrayList<>();
+        String displayQuery = "SELECT * from " + tableName;
+
+        try {
+            stmt = conn.prepareStatement(displayQuery);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                userList.add(new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+
+        return userList;
     }
 
     public void updateRecord(User user) {
