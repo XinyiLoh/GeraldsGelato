@@ -4,7 +4,6 @@
     Author     : ASUS
 --%>
 
-<%@page import="java.util.ArrayList"%>
 <%@page import="dataAccess.icecreamDA"%>
 <%@page import="domain.IceCream"%>
 <!-- Functions -->
@@ -62,7 +61,7 @@
                 
                 <tr>               
                     <td>ID</td>
-                    <td><input type="text" name="id" value="<%= ic.getIcecreamID() %>" readonly=""></td>
+                    <td><input type="text" name="ID" value="<%= ic.getIcecreamID() %>" readonly></td>
                 </tr>
                 <tr>               
                     <td>Name</td>
@@ -102,7 +101,7 @@
                 </tr>
             </table>
             <button type="reset" name="reset">Reset</button>
-            <button type="submit" name="submit">Update</button>
+            <button type="submit" name="submit" value="success">Update</button>
         </form>
         
         

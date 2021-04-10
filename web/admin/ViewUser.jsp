@@ -80,9 +80,10 @@
                     <td>Role</td>
                     <td><input type="text" name="role"value="<%= user.getRole() %>"></td>
                 </tr>
+                
+            </table>
                 <button type="reset" name="reset">Reset</button>
                 <button type="submit" name="submit">Update</button>
-            </table>
         </form>
     </body>
 </html>
