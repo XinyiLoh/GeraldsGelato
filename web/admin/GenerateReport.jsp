@@ -4,20 +4,21 @@
     Author     : NEC
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="dataAccess.paymentDA"%>
 <%@page import="domain.Payment"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page import="java.util.*" %>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!-- Functions -->
 <%  //Declarations
     ArrayList<Payment> displayPayment = new ArrayList<Payment>();
     paymentDA da = new paymentDA();
+     double totalPaymentAmount = 0;
 
     //Database Access
     displayPayment = da.selectAllPayment();
+   
 %>
 
 
@@ -72,8 +73,15 @@
             <%
             }
             %>
-         
+            
        </table> 
+            
+            <br/>
+            <table style="background-color: #F0F8FF" border="5" cellpadding="5">
+                <td >Total Payment Amount : </td>
+                <td>.</td>
+                
+            </table>
         
     </body>
     
