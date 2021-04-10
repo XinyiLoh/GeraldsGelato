@@ -162,7 +162,7 @@ ol, ul {
     </style>
 
 <section class="ftco-section">
-    <form action="Checkout.java" class="billing-form" method="get">
+    <form action="Checkout" class="billing-form" method="post">
     <div class="container">
             <div class="row justify-content-center">
       <div class="col-xl-10 ftco-animate">
@@ -246,9 +246,6 @@ ol, ul {
                       </div>
                       <div class="w-100"></div>
                       </div>
-                    <div class="btn btn-primary py-1 px-4">
-                        <input type="submit" value="place your order" class="text-capitalize btn btn-primary btn-block p-3">
-                    </div>
                 
                 <%
                     for(int i=0;i<cartList.size();i++){
@@ -330,9 +327,12 @@ ol, ul {
                     <div id="form-footer">
                         <p>By placing your order, you agree to our <a href="#">privacy notice</a> & <a href="#">terms of use</a>.
                                                 </div>
-                                        </div>
-                                        </div>           
-                        </div>
+                    <div class="btn btn-primary py-1 px-4">
+                        <input type="submit" value="place your order" class="text-capitalize btn btn-primary btn-block p-3">
+                    </div>
+                    </div>
+                    </div>           
+                   </div>
                     </div>
                                                  
                          </div>

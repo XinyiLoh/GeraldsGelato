@@ -2,11 +2,15 @@
 package Controller;
 
 import dataAccess.customerDA;
+import dataAccess.paymentDA;
 import domain.Customer;
+import domain.Payment;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Koh Hui Hui
  */
-@WebServlet(name = "Checkout", urlPatterns = {"/Checkout"})
+@WebServlet(urlPatterns = {"/Checkout"})
 public class Checkout extends HttpServlet {
 
     /**
@@ -34,31 +38,60 @@ public class Checkout extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        ArrayList <Customer> custList=new ArrayList <Customer>();
+        ArrayList <Payment> payList=new ArrayList <Payment>();
         customerDA custDb=new customerDA();
-        String custId="A1001";
+        paymentDA payDb=new paymentDA();
+        
+//        customer data
+        int custId=0;
         String firstname=request.getParameter("fName").trim();
         String lastname=request.getParameter("lName").trim();
-        String address=request.getParameter("streetAddress").trim();
+        String streetaddress=request.getParameter("streetAddress").trim();
         String unitaddress=request.getParameter("unitAddress").trim();
         String city=request.getParameter("city").trim();
         String state=request.getParameter("state").trim();
-        String postcode=request.getParameter("postcode").trim();
         String email=request.getParameter("email").trim();
         String phone=request.getParameter("phone").trim();
-        String totalPayment=request.getParameter("totalPay").trim();
+        int pcode=Integer.parseInt(request.getParameter("postcode").trim());
+        String address=streetaddress+", "+unitaddress;
         
-        int pcode=Integer.parseInt(postcode);
-        double amountPay=Double.parseDouble(totalPayment);
-                
-       Customer cust = new Customer(custId, firstname, lastname, address, city, state, pcode, email, phone);
+//        payment data
+        int payId=0;
+        double amountPay=Double.parseDouble(request.getParameter("totalPay").trim());
+        String payMethod=request.getParameter("payMethod").trim();
+        
+//        date
+        Calendar now = Calendar.getInstance();
+        int year = now.get(Calendar.YEAR);
+        int month = now.get(Calendar.MONTH);
+        int day = now.get(Calendar.DAY_OF_MONTH);
+        String yearInString = String.valueOf(year);
+        String monthInString = String.valueOf(month);
+        String dayInString = String.valueOf(day);
+        String paymentDate=dayInString+"-"+monthInString+"-"+yearInString;
+        
+//        id
+        int custNum=custList.size();
+        custId=custNum++;
+        String customerId="A"+custId;
+        
+        int payNum=payList.size();
+        payId=payNum++;
+        String orderId="O"+payId;
+        
+       Customer cust = new Customer(customerId, firstname, lastname, address, city, state, pcode, email, phone);
+        Payment pay=new Payment(orderId, amountPay, paymentDate, payMethod, "packaging", customerId);
         try {
             custDb.addCustomer(cust);
-//        response.sendRedirect("SuccessOrder.jsp?ID=" + payId);
-        
-        } catch (SQLException ex) {
+            payDb.addRecord(pay);
+            HttpSession session = request.getSession();
+            request.setAttribute("orderID", orderId);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("SuccessOrder.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception ex) {
             Logger.getLogger(Checkout.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("SuccessOrder.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,6 +106,7 @@ public class Checkout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**
@@ -86,6 +120,7 @@ public class Checkout extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

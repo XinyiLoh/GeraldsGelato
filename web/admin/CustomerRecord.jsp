@@ -12,9 +12,22 @@
 <%  //Declarations
     ArrayList<Customer> displayCustomer = new ArrayList<Customer>();
     customerDA da = new customerDA();
+    Customer customer = new Customer();
+    boolean error = false;
 
     //Database Access
     displayCustomer = da.selectAllCustomer();
+    
+    if(request.getParameter("submit") != null){
+        String search = request.getParameter("search");
+        
+        if(da.getCustomerId(search) == null){
+            error = true;
+        }
+        else{
+            customer = da.getCustomerId(search);
+        }
+    }
 %>
 
 <!DOCTYPE html>
@@ -40,7 +53,15 @@
        <table style="background-color: #F0F8FF" border="5" cellpadding="5" class="table table-striped">
            
             <h1><b><u><center>Customer Record</center></u></b></h1>
+            
+            <form>
+            <input type="text" name="search" placeholder="Search Using Customer ID.">
+            <button type="submit" name="submit" value="search">Search</button>
+            </form><br/>
                    
+        <% 
+            if(request.getParameter("submit") == null){
+        %>
             <thead>
                 
             </thead>
@@ -77,9 +98,48 @@
             </tr>
             
             <%
+                }
             }
-            %>
-         
+            else if(!error){
+                
+         %>
+            <thead>
+                
+            </thead>
+            <tr>
+                <th>Customer ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Postcode</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            
+            <tbody>
+                
+            </tbody>
+            
+            <tr>
+                <td><%= customer.getCustId() %></td>
+                <td><%= customer.getFirstname() %></td>
+                <td><%= customer.getLastname() %></td>
+                <td><%= customer.getAddress() %></td>
+                <td><%= customer.getCity() %></td> 
+                <td><%= customer.getState() %></td>
+                <td><%= customer.getPostcode() %></td>
+                <td><%= customer.getEmail() %></td>
+                <td><%= customer.getPhone() %></td>
+            </tr>
+            
+        <%
+            }
+            else{
+                out.println("No Such Customer.");
+            }
+        %>       
        </table> 
 
     </body>
