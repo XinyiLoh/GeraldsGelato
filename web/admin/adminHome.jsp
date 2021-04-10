@@ -49,10 +49,12 @@
         }
         %>
 
-    <div class="wrap">
+        <div class="wrap">
             <h5>Hi <%=user.getUsername() %>, Welcome back.</h5>
-        <a href="../index.jsp"><span class="fa fa-long-arrow-right mr-1"></span> Gerald's Gelato Homepage</a>
-    </div>
+            <div class="reg">
+                        <p class="mb-0"><a href="../index.jsp"><span class="fa fa-long-arrow-right mr-1"></span> Gerald's Gelato Homepage</a></p>
+            </div>
+        </div>
          <section class="ftco-section">
           <div class="container">
             <div class="row justify-content-center mb-5">
