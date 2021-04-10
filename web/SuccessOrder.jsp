@@ -35,11 +35,9 @@
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
-            <h2 class="text-center text-success mb-5 bread">Order Successfully Placed</h2>
-<!--          <div class="col-md-9 ftco-animate mb-5 text-center">
-          	<p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.jsp">Home <i class="fa fa-chevron-right"></i></a></span> <span>Order Successful <i class="fa fa-chevron-right"></i></span></p>
-            <h2 class="mb-0 bread">Order Successful</h2>
-          </div>-->
+            <div class="col-md-9 ftco-animate mb-5 text-center">
+            <h2 class="mb-0 bread">Order Successfully Placed</h2>
+          </div>
         </div>
       </div>
     </section>

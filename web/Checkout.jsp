@@ -3,12 +3,21 @@
     Author     : Koh Hui Hui
 --%>
 
+<%@page import="domain.Cart"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="Controller.Checkout"%>
+<%@page import="dataAccess.cartDA"%>
+<%@page import="java.text.DecimalFormat" %>
 <%@ page language="java" contentType="text/html; charset=US-ASCII" pageEncoding="US-ASCII"%>
 <%@ page import="java.util.List" %>
 
 <%
-    String payAmt = request.getParameter("total") + 0;
+    ArrayList<Cart> cartList = new ArrayList<Cart>();
+    cartDA da = new cartDA();
+
+    cartList = da.selectAllCart();
+    double payAmt = 0;
+    DecimalFormat priceFormatter = new DecimalFormat("RM0.00");
 %>
 
 <!DOCTYPE html>
@@ -82,11 +91,9 @@
     box-shadow: 0 0 7px #9acc9a !important;
     background: #f9f9f9 url(../images/valid.png) no-repeat 98% center !important
 }
-
 .btn-xs{
     line-height: 28px;
 }
-
 /* images*/
 ol, ul {
   list-style: none;
@@ -149,14 +156,13 @@ ol, ul {
 .cards li:last-child {
   margin-right: 0;
 }
-
 .nav-item{
     display: inline-block
 }
     </style>
 
 <section class="ftco-section">
-    <form action="Checkout" class="billing-form" method="get">
+    <form action="Checkout.java" class="billing-form" method="get">
     <div class="container">
             <div class="row justify-content-center">
       <div class="col-xl-10 ftco-animate">
@@ -240,14 +246,23 @@ ol, ul {
                       </div>
                       <div class="w-100"></div>
                       </div>
+                    <div class="btn btn-primary py-1 px-4">
+                        <input type="submit" value="place your order" class="text-capitalize btn btn-primary btn-block p-3">
+                    </div>
+                
+                <%
+                    for(int i=0;i<cartList.size();i++){
+                        payAmt += cartList.get(i).getQuantity()* cartList.get(i).getPrice();
+                    }
+                %>
 
               <div class="row mt-5 pt-3 d-flex">
                     <div class="col-md-6 d-flex">
                         <div class="cart-detail p-md-5">
                             <h3 class="billing-heading mb-4">Cart Total</h3>
                             <p class="d-flex total-price">
-                                <span>Total &emsp;&emsp;&emsp;RM <%= payAmt%></span>
-                                <span></span>
+                                <span>Total &emsp;&emsp;&emsp;<%= priceFormatter.format(payAmt) %></span>
+                                <span><input type="hidden" name="totalPay" value="<%= payAmt %>"/></span>
                             </p>
                         </div>
                      </div>
@@ -311,9 +326,7 @@ ol, ul {
             <div class="w-100"></div>
             <div class="col-md-12">
                 <div class="form-group mt-4">
-                    <div class="btn btn-primary py-1 px-4">
-                        <input type="submit" value="place your order" class="text-capitalize btn btn-primary btn-block p-3">
-                    </div>
+                    
                     <div id="form-footer">
                         <p>By placing your order, you agree to our <a href="#">privacy notice</a> & <a href="#">terms of use</a>.
                                                 </div>

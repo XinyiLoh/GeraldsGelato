@@ -18,7 +18,7 @@ public class Customer {
     public Customer(){
     }
     
-    public Customer(String custId, String firstname, String lastname, String address, String city, String state, Integer postcode, String email, String phone) {
+    public Customer(String custId, String firstname, String lastname, String address, String city, String state, int postcode, String email, String phone) {
         this.custId = custId;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -100,5 +100,10 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" + "custId=" + custId + ", firstname=" + firstname + ", lastname=" + lastname + ", address=" + address + ", city=" + city + ", state=" + state + ", postcode=" + postcode + ", email=" + email + ", phone=" + phone + '}';
     }
 }

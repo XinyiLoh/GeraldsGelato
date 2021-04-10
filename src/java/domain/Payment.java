@@ -11,19 +11,17 @@ public class Payment {
     private String paymentDate;
     private String paymentMode;
     private String orderStatus;
-    private String cartId;
     private String custId;
     
     public Payment(){
     }
     
-    public Payment(String paymentId, double paymentAmount, String paymentDate, String paymentMode, String orderStatus, String cartId, String custId){
+    public Payment(String paymentId, double paymentAmount, String paymentDate, String paymentMode, String orderStatus, String custId){
         this.paymentId = paymentId;
         this.paymentAmount = paymentAmount;
         this.paymentDate = paymentDate;
         this.paymentMode = paymentMode;
         this.orderStatus = orderStatus;
-        this.cartId = cartId;
         this.custId = custId;
     }
     
@@ -68,14 +66,6 @@ public class Payment {
         this.orderStatus = orderStatus;
     }
             
-    public String getCartId(){
-        return cartId;
-    }
-    
-    public void setCartId(String cartId){
-        this.cartId = cartId;
-    }
-            
     public String getCustId(){
         return custId;
     }
@@ -83,5 +73,9 @@ public class Payment {
     public void setCustId(String custId){
         this.custId = custId;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Payment{" + "paymentId=" + paymentId + ", paymentAmount=" + paymentAmount + ", paymentDate=" + paymentDate + ", paymentMode=" + paymentMode + ", orderStatus=" + orderStatus + ", custId=" + custId + '}';
+    }
 }

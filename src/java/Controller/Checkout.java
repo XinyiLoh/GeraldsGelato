@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,12 +39,16 @@ public class Checkout extends HttpServlet {
         String firstname=request.getParameter("fName").trim();
         String lastname=request.getParameter("lName").trim();
         String address=request.getParameter("streetAddress").trim();
+        String unitaddress=request.getParameter("unitAddress").trim();
         String city=request.getParameter("city").trim();
         String state=request.getParameter("state").trim();
         String postcode=request.getParameter("postcode").trim();
         String email=request.getParameter("email").trim();
         String phone=request.getParameter("phone").trim();
+        String totalPayment=request.getParameter("totalPay").trim();
+        
         int pcode=Integer.parseInt(postcode);
+        double amountPay=Double.parseDouble(totalPayment);
                 
        Customer cust = new Customer(custId, firstname, lastname, address, city, state, pcode, email, phone);
         try {

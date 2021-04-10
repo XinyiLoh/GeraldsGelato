@@ -42,7 +42,7 @@ public class paymentDA {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                payment = new Payment(paymentId, rs.getDouble("PAYMENT_AMOUNT"), rs.getString("PAYMENT_DATE"), rs.getString("PAYMENT_MODE"), rs.getString("ORDER_STATUS"), rs.getString("CART_ID"), rs.getString("CUST_ID"));
+                payment = new Payment(paymentId, rs.getDouble("PAYMENT_AMOUNT"), rs.getString("PAYMENT_DATE"), rs.getString("PAYMENT_MODE"), rs.getString("ORDER_STATUS"), rs.getString("CUST_ID"));
             }
         } catch (SQLException ex) {
             ex.getMessage();
@@ -61,7 +61,6 @@ public class paymentDA {
             stmt.setString(3, payment.getPaymentDate());
             stmt.setString(4, payment.getPaymentMode());
             stmt.setString(5, payment.getOrderStatus());
-            stmt.setString(6, payment.getCartId());
             stmt.setString(7, payment.getCustId());
 
             stmt.executeUpdate();
@@ -82,7 +81,7 @@ public class paymentDA {
             stmt = conn.prepareStatement(sqlQueryStr);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                paymentList.add(new Payment(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+                paymentList.add(new Payment(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
         } catch (SQLException ex) {
             ex.getMessage();

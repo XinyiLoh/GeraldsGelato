@@ -113,4 +113,8 @@ public class IceCream {
         this.iceCreamIngredients = iceCreamIngredients;
     }
 
+    @Override
+    public String toString() {
+        return "IceCream{" + "icecreamID=" + icecreamID + ", iceCreamName=" + iceCreamName + ", iceCreamPrice=" + iceCreamPrice + ", iceCreamDescription=" + iceCreamDescription + ", iceCreamRating=" + iceCreamRating + ", iceCreamImage=" + iceCreamImage + ", iceCreamType=" + iceCreamType + ", iceCreamAvailable=" + iceCreamAvailable + ", iceCreamLongDesc=" + iceCreamLongDesc + ", iceCreamIngredients=" + iceCreamIngredients + '}';
+    }
 }

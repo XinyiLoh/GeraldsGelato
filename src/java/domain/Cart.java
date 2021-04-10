@@ -65,12 +65,8 @@ public class Cart {
         this.quantity = quantity;
     }
 
-    public double getTotalPayment() {
-        double total = 0;
-        total += price;
-
-        return total;
-
+    @Override
+    public String toString() {
+        return "Cart{" + "id=" + id + ", name=" + name + ", price=" + price + ", image=" + image + ", quantity=" + quantity + '}';
     }
-
 }
