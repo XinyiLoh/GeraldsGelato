@@ -4,6 +4,7 @@
     Author     : NEC
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="dataAccess.paymentDA"%>
 <%@page import="domain.Payment"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,10 +15,12 @@
 <%  //Declarations
     ArrayList<Payment> displayPayment = new ArrayList<Payment>();
     paymentDA da = new paymentDA();
-     double totalPaymentAmount = 0;
+     
 
     //Database Access
     displayPayment = da.selectAllPayment();
+    double totalPaymentAmount = 0;
+    DecimalFormat priceFormatter = new DecimalFormat("RM0.00");
    
 %>
 
@@ -66,7 +69,7 @@
             <tr>
                 <td><%= displayPayment.get(i).getPaymentId() %></td>
                 <td><%= displayPayment.get(i).getPaymentDate() %></td>
-                <td><%= displayPayment.get(i).getPaymentAmount() %></td>
+                <td>RM <%= displayPayment.get(i).getPaymentAmount() %></td>
                 
             </tr>
             
@@ -74,12 +77,22 @@
             }
             %>
             
+            <%
+                    for(int i=0;i<displayPayment.size();i++){
+                        totalPaymentAmount += displayPayment.get(i).getPaymentAmount();
+                    }
+                %>
+            
        </table> 
             
             <br/>
             <table style="background-color: #F0F8FF" border="5" cellpadding="5">
+                
                 <td >Total Payment Amount : </td>
-                <td>.</td>
+                
+                
+                <td><%= priceFormatter.format(totalPaymentAmount) %>  </td>
+                <span><input type="hidden" name="totalPaymentAmount" value="<%= totalPaymentAmount %>"/></span>
                 
             </table>
         
