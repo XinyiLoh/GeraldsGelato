@@ -4,7 +4,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,7 +45,7 @@
 	<div class="row">
 <div class="col-md-12">
         <h2 class="text-center mb-4">Thank you for your payment</h2>
-        <h4 class="text-center text-black-50" style="margin-top:5%">Your order ID is: 100000023(########)</h4>
+        <h4 class="text-center text-black-50" style="margin-top:5%">Your order ID is: <% request.getAttribute("orderID"); %></h4>
           <center><div class="btn-group" style="margin-top:5%">
                   <a href="icecream.jsp" class="btn btn-primary py-3 px-4">Continue Shopping</a>
               </div>
