@@ -42,19 +42,19 @@
                     padding: 8px;
 
                     text-align: center; 
+                }
 
             </style>
             
             <h1><b><u><center>Sales Record</center></u></b></h1>
-            
-            <a href="UpdateOrderStatus.jsp"><button style="margin-left: 90%" length="80%" type="button">Update Order Status</button></a><br/><br/>
-            
+                                    
             <tr>
                 <th>Payment ID</th>
                 <th>Customer ID</th>
                 <th>Payment Date</th>
                 <th>Payment Amount</th>
                 <th>Order Status</th>
+                <th colspan="1">Action</th>
            
             </tr>
       
@@ -67,7 +67,8 @@
                 <td><%= displayPayment.get(i).getCustId() %></td>
                 <td><%= displayPayment.get(i).getPaymentDate() %></td>
                 <td><%= displayPayment.get(i).getPaymentAmount() %></td>
-                <td><%= displayPayment.get(i).getOrderStatus() %></td>
+                <td><%= displayPayment.get(i).getOrderStatus() %></td> 
+                <td><a href="UpdateOrderStatus.jsp?status=<%= displayPayment.get(i).getPaymentId() %>">Update Order Status</a></td>
                 
             </tr>
             
