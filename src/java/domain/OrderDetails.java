@@ -10,15 +10,25 @@ public class OrderDetails {
     private int quantity;
     private String prodId;
     private String payId;
+    private String id;
 
     public OrderDetails() {
 
     }
 
-    public OrderDetails(String prodId, String payId, int quantity) {
-        this.prodId = prodId;
-        this.payId = payId;
+    public OrderDetails(String id, int quantity, String prodId, String payId) {
+        this.id = id;
         this.quantity = quantity;
+        this.payId = payId;
+        this.prodId = prodId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getProdId() {

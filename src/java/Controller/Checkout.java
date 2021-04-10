@@ -2,8 +2,10 @@
 package Controller;
 
 import dataAccess.customerDA;
+import dataAccess.orderdetailsDA;
 import dataAccess.paymentDA;
 import domain.Customer;
+import domain.OrderDetails;
 import domain.Payment;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,19 +44,20 @@ public class Checkout extends HttpServlet {
         ArrayList <Payment> payList=new ArrayList <Payment>();
         customerDA custDb=new customerDA();
         paymentDA payDb=new paymentDA();
+        orderdetailsDA orderDb=new orderdetailsDA();
         
 //        customer data
         int custId=0;
-        String firstname=request.getParameter("fName").trim();
-        String lastname=request.getParameter("lName").trim();
-        String streetaddress=request.getParameter("streetAddress").trim();
-        String unitaddress=request.getParameter("unitAddress").trim();
-        String city=request.getParameter("city").trim();
-        String state=request.getParameter("state").trim();
-        String email=request.getParameter("email").trim();
-        String phone=request.getParameter("phone").trim();
-        int pcode=Integer.parseInt(request.getParameter("postcode").trim());
-        String address=streetaddress+", "+unitaddress;
+        String firstname = request.getParameter("fName").trim();
+        String lastname = request.getParameter("lName").trim();
+        String streetaddress = request.getParameter("streetAddress").trim();
+        String unitaddress = request.getParameter("unitAddress").trim();
+        String city = request.getParameter("city").trim();
+        String state = request.getParameter("state").trim();
+        String email = request.getParameter("email").trim();
+        String phone = request.getParameter("phone").trim();
+        int pcode = Integer.parseInt(request.getParameter("postcode").trim());
+        String address = streetaddress+", "+unitaddress;
         
 //        payment data
         int payId=0;
@@ -69,7 +72,7 @@ public class Checkout extends HttpServlet {
         String yearInString = String.valueOf(year);
         String monthInString = String.valueOf(month);
         String dayInString = String.valueOf(day);
-        String paymentDate=dayInString+"-"+monthInString+"-"+yearInString;
+        String paymentDate = dayInString+"-"+monthInString+"-"+yearInString;
         
 //        id
         int custNum=custList.size();
@@ -80,8 +83,10 @@ public class Checkout extends HttpServlet {
         payId=payNum++;
         String orderId="O"+payId;
         
-       Customer cust = new Customer(customerId, firstname, lastname, address, city, state, pcode, email, phone);
-        Payment pay=new Payment(orderId, amountPay, paymentDate, payMethod, "packaging", customerId);
+        Customer cust = new Customer(customerId, firstname, lastname, address, city, state, pcode, email, phone);
+        Payment pay = new Payment(orderId, amountPay, paymentDate, payMethod, "packaging", customerId);
+        OrderDetails order = new OrderDetails();
+        
         try {
             custDb.addCustomer(cust);
             payDb.addRecord(pay);
