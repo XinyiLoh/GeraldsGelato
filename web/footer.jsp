@@ -43,10 +43,9 @@
             <div class="ftco-footer-widget mb-4 ml-md-4">
               <h2 class="ftco-heading-2">My Accounts</h2>
               <ul class="list-unstyled">
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Account</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Register</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Log In</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Order</a></li>
+                <li><a href="UserSignUp.jsp"><span class="fa fa-chevron-right mr-2"></span>Register</a></li>
+                <li><a href="UserLogin.jsp"><span class="fa fa-chevron-right mr-2"></span>Log In</a></li>
+                <li><a href="UserLogout.jsp"><span class="fa fa-chevron-right mr-2"></span>Log Out</a></li>
               </ul>
             </div>
           </div>
@@ -54,10 +53,8 @@
             <div class="ftco-footer-widget mb-4 ml-md-4">
               <h2 class="ftco-heading-2">Information</h2>
               <ul class="list-unstyled">
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About us</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Catalog</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact us</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Term &amp; Conditions</a></li>
+                <li><a href="aboutUs.jsp"><span class="fa fa-chevron-right mr-2"></span>About us</a></li>
+                <li><a href="contact.jsp"><span class="fa fa-chevron-right mr-2"></span>Contact us</a></li>
               </ul>
             </div>
           </div>
@@ -65,10 +62,7 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Quick Link</h2>
               <ul class="list-unstyled">
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>New User</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Help Center</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Report Spam</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Faq's</a></li>
+                <li><a href="admin/adminHome.jsp"><span class="fa fa-chevron-right mr-2"></span>Admin Panel</a></li>
               </ul>
             </div>
           </div>

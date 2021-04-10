@@ -35,20 +35,7 @@
                         </p>
                     </div>
                     <div class="reg">
-                        <% 
-                            if(session.getAttribute("user") == null){
-                        %>
-                                <p class="mb-0"><a href="UserSignUp.jsp" class="mr-2">Sign Up</a> <a href="UserLogin.jsp">Log In</a></p>
-                        <%
-                            }else{ 
-                                user =(User) session.getAttribute("user");
-                        %>
-                                <form action="UserLogout" method="POST">
-                                    <button type="submit">Logout</button>
-                                </form>
-                        <%
-                            };
-                        %>
+                        <p class="mb-0"><a href="UserSignUp.jsp" class="mr-2">Sign Up</a> <a href="UserLogin.jsp" class="mr-2">Log In</a><a href="UserLogout.jsp" class="mr-2">Log Out</a></p>
                     </div>
                 </div>
             </div>

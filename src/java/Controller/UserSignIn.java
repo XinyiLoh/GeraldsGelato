@@ -38,9 +38,9 @@ public class UserSignIn extends HttpServlet {
             String password = request.getParameter("password").trim();
 
             User user = userDA.getRecordByEmailAndPassword(email, password);
-            RequestDispatcher rd = request.getRequestDispatcher("UserLogin.jsp");
-            if (user == null) {
 
+            if (user == null) {
+                RequestDispatcher rd = request.getRequestDispatcher("UserLogin.jsp");
                 if (userDA.getRecordByEmail(email) == null) {
                     out.println("<font color=red>Email is incorrect.</font>");
                     rd.include(request, response); //send message to the UserLogin.jsp
@@ -54,7 +54,9 @@ public class UserSignIn extends HttpServlet {
                 session.setMaxInactiveInterval(60 * 60); //session expiry in 1 hour
 
                 if (user.getRole().equals("user")) {
-                    response.sendRedirect("index.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                    out.println("<font color=green> Hi " + user.getUsername() + ". Welcome back !.</font>");
+                    rd.include(request, response);
                 } else if (user.getRole().equals("admin")) {
                     response.sendRedirect("admin/adminHome.jsp");
                 }
