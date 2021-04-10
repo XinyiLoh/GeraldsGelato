@@ -106,7 +106,7 @@ public class icecreamDA {
     public void updateRecord(IceCream icecream) {
         createConnection();
         try {
-            String updateStr = "UPDATE " + tableName + " SET name = ?, price = ?, description = ?, rating = ?, image = ?, type = ?, available = ?, descl = ?, ingrediants = ? WHERE id = ?";
+            String updateStr = "UPDATE " + tableName + " SET name = ?, price = ?, description = ?, rating = ?, image = ?, type = ?, available = ?, descl = ?, ingrediants = ? " + " WHERE id = ?";
             stmt = conn.prepareStatement(updateStr);
             stmt.setString(1, icecream.getIceCreamName());
             stmt.setDouble(2, icecream.getIceCreamPrice());
