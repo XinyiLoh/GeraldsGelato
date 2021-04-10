@@ -32,8 +32,9 @@ public class paymentDA {
         createConnection();
     }
 
-   public Payment getPaymentId(String paymentId) {
-        String queryStr = "SELECT * FROM " + tableName + " WHERE ID = ?";
+   public static Payment getPaymentId(String paymentId) {
+       
+        String queryStr = "SELECT * FROM " + tableName + " WHERE PAYMENT_ID = ?";
         Payment payment = null;
         try {
             stmt = conn.prepareStatement(queryStr);
@@ -41,7 +42,7 @@ public class paymentDA {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                payment = new Payment(paymentId, rs.getDouble("PaymentAmount"), rs.getString("PaymentDate"), rs.getString("PaymentMode"), rs.getString("orderStatus"), rs.getString("cartId"), rs.getString("custId"));
+                payment = new Payment(paymentId, rs.getDouble("PAYMENT_AMOUNT"), rs.getString("PAYMENT_DATE"), rs.getString("PAYMENT_MODE"), rs.getString("ORDER_STATUS"), rs.getString("CART_ID"), rs.getString("CUST_ID"));
             }
         } catch (SQLException ex) {
             ex.getMessage();
@@ -108,7 +109,20 @@ public class paymentDA {
             ex.getMessage();
         }
     }
-
+    
+    public void updateOrderStatusRecord(String os,String id) {
+        createConnection();
+        try {
+            String updateStr = "UPDATE " + tableName + " SET ORDER_STATUS = ? WHERE PAYMENT_ID = ?";
+            stmt = conn.prepareStatement(updateStr);
+            stmt.setString(1, os);
+            stmt.setString(2, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        } 
+    }
+    
     public static void main(String[] args) {
         ArrayList<Payment> paymentList = new ArrayList<Payment>();
         paymentDA icda = new paymentDA();
