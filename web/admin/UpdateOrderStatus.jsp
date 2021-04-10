@@ -52,6 +52,7 @@
                 <th>Payment ID</th>
                 <th>Customer ID</th>
                 <th>Order Status</th>
+                <th colspan="3">Update Order Status</th>
            
             </tr>
       
@@ -63,6 +64,9 @@
                 <td><%= displayPayment.get(i).getPaymentId() %></td>
                 <td><%= displayPayment.get(i).getCustId() %></td>
                 <td><%= displayPayment.get(i).getOrderStatus() %></td>
+                <td><button name="submit" value="packaging" class="btn btn-warning">packaging</button> </td>
+                <td><button name="submit" value="shipping" class="btn btn-warning">shipping</button></td>
+                <td><button name="submit" value="delivered" class="btn btn-warning">delivered</button></td>
                 
             </tr>
             
