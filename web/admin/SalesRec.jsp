@@ -61,7 +61,7 @@
             
             <h1><b><u><center>Sales Record</center></u></b></h1>
             <form>
-            <input type="text" name="search" placeholder="Search Using Product ID.">
+            <input type="text" name="search" placeholder="Search Using Payment ID.">
             <button type="submit" name="submit" value="search">Search</button>
             </form><br/>
             
