@@ -13,9 +13,22 @@
 <%  //Declarations
     ArrayList<Payment> displayPayment = new ArrayList<Payment>();
     paymentDA da = new paymentDA();
+    Payment payment = new Payment();
+    boolean error = false;
 
     //Database Access
     displayPayment = da.selectAllPayment();
+
+    if(request.getParameter("submit") != null){
+        String search = request.getParameter("search");
+        
+        if(da.getPaymentId(search) == null){
+            error = true;
+        }
+        else{
+            payment = da.getPaymentId(search);
+        }
+    }
 %>
 
 
@@ -47,7 +60,14 @@
             </style>
             
             <h1><b><u><center>Sales Record</center></u></b></h1>
-                                    
+            <form>
+            <input type="text" name="search" placeholder="Search Using Product ID.">
+            <button type="submit" name="submit" value="search">Search</button>
+            </form><br/>
+            
+        <% 
+            if(request.getParameter("submit") == null){
+        %>
             <tr>
                 <th>Payment ID</th>
                 <th>Customer ID</th>
@@ -58,9 +78,9 @@
            
             </tr>
       
-            <% 
-            for (int i = 0; i < displayPayment.size(); i++){
-            %>
+        <% 
+                for (int i = 0; i < displayPayment.size(); i++){
+        %>
             
             <tr>
                 <td><%= displayPayment.get(i).getPaymentId() %></td>
@@ -72,9 +92,37 @@
                 
             </tr>
             
-            <%
+        <%
+                }
             }
-            %>
+            else if(!error){
+
+         %>
+            <tr>
+                <th>Payment ID</th>
+                <th>Customer ID</th>
+                <th>Payment Date</th>
+                <th>Payment Amount</th>
+                <th>Order Status</th>
+                <th colspan="1">Action</th>
+            </tr>
+            
+            <tr>
+                <td><%= payment.getPaymentId() %></td>
+                <td><%= payment.getCustId() %></td>
+                <td><%= payment.getPaymentDate() %></td>
+                <td><%= payment.getPaymentAmount() %></td>
+                <td><%= payment.getOrderStatus() %></td> 
+                <td><a href="UpdateOrderStatus.jsp?status=<%= payment.getPaymentId() %>">Update Order Status</a></td>
+                
+            </tr>
+            
+        <%
+            }
+            else{
+                out.println("No Such Record.");
+            }
+        %>   
          
        </table> 
         

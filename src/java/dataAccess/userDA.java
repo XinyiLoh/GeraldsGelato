@@ -61,6 +61,7 @@ public class userDA {
             if (rs.next()) {
                 user = new User(username, rs.getString("Email"), rs.getString("Password"), rs.getString("Role"));
             }
+
         } catch (SQLException ex) {
             ex.getMessage();
         }
