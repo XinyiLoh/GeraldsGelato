@@ -5,21 +5,12 @@
 --%>
 
 <%@page import="dataAccess.userDA"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
 <%  //Declarations
     userDA da = new userDA();
     String username = request.getParameter("username");
     User user = da.getRecordByUsername(username);
-    
-    if(request.getParameter("cancel") != null){
-%>
-<script>
-        window.location.href='UserDisplay.jsp';
-</script>
-<%
-    }
-    
+
     if(request.getParameter("submit") != null){
         da.deleteRecord(username);
 %>
@@ -38,7 +29,7 @@
     </head>
     <body>
         <h2>User Detail</h2>
-        <form>
+        <form action="DeleteUser.jsp">
             <table border="1" cellpadding="5">
                 <tr>               
                     <td>Username</td>

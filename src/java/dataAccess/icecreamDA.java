@@ -3,6 +3,7 @@ package dataAccess;
 import domain.IceCream;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,7 +32,9 @@ public class icecreamDA {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                iceCream = new IceCream(iceCreamID, rs.getString("Name"), rs.getDouble("Price"), rs.getString("Description"), rs.getInt("Rating"), rs.getString("Image"), rs.getString("Type"), rs.getInt("Available"), rs.getString("Descl"), rs.getString("Ingrediants"));
+                iceCream = new IceCream(iceCreamID, rs.getString("Name"), rs.getDouble("Price"), rs.getString("Description"),
+                        rs.getInt("Rating"), rs.getString("Image"), rs.getString("Type"), rs.getInt("Available"),
+                        rs.getString("Descl"), rs.getString("Ingrediants"));
             }
         } catch (SQLException ex) {
             ex.getMessage();
@@ -61,7 +64,7 @@ public class icecreamDA {
     public void addRecord(IceCream icecream) throws SQLException {
         createConnection();
         try {
-            String sqlInsertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlInsertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sqlInsertStr);
             stmt.setString(1, icecream.getIcecreamID());
             stmt.setString(2, icecream.getIceCreamName());
@@ -98,6 +101,39 @@ public class icecreamDA {
         }
 
         return icecreamList;
+    }
+
+    public void updateRecord(IceCream icecream) {
+        createConnection();
+        try {
+            String updateStr = "UPDATE " + tableName + " SET name = ?, price = ?, description = ?, rating = ?, image = ?, type = ?, available = ?, descl = ?, ingrediants = ? WHERE id = ?";
+            stmt = conn.prepareStatement(updateStr);
+            stmt.setString(1, icecream.getIceCreamName());
+            stmt.setDouble(2, icecream.getIceCreamPrice());
+            stmt.setString(3, icecream.getIceCreamDescription());
+            stmt.setInt(4, icecream.getIceCreamRating());
+            stmt.setString(5, icecream.getIceCreamImage());
+            stmt.setString(6, icecream.getIceCreamType());
+            stmt.setInt(7, icecream.getIceCreamAvailable());
+            stmt.setString(8, icecream.getIceCreamLongDesc());
+            stmt.setString(9, icecream.getIceCreamIngredients());
+            stmt.setString(10, icecream.getIcecreamID());
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void deleteRecord(String id) {
+        createConnection();
+        try {
+            String deleteStr = "DELETE FROM " + tableName + " WHERE id = ?";
+            stmt = conn.prepareStatement(deleteStr);
+            stmt.setString(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void shutDown() throws SQLException {

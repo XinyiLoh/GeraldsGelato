@@ -47,7 +47,7 @@
                     <div class="col-md-8 ftco-animate d-flex align-items-end">
                         <div class="text w-100 text-center">
                             <h1 class="mb-4">Sundae <span>Smile </span>Scoop </h1>
-                            <p><a href="icecream.jsp" class="btn btn-primary py-2 px-4">Shop Now</a> <a href="#" class="btn btn-white btn-outline-white py-2 px-4">Read more</a></p>
+                            <p><a href="icecream.jsp" class="btn btn-primary py-2 px-4">Shop Now</a> <a href="aboutUs.jsp" class="btn btn-white btn-outline-white py-2 px-4">Read more</a></p>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
     </div>
 </section>
 
-<section class="ftco-section testimony-section img" style="background-image: url(images/bg_4.jpg);">
+<section class="ftco-section testimony-section img" style="background-image: url(image/PIC.jpg);">
     <div class="overlay"></div>
     <div class="container">
         <div class="row justify-content-center mb-5">

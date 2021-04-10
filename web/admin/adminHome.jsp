@@ -50,34 +50,11 @@
         %>
 
         <div class="wrap">
-            <h5>Hi <%=user.getUsername() %>, this is admin page.</h5>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 d-flex align-items-center">
-                    <p class="mb-0 phone pl-md-2">
-                        <a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 0000 000</a> 
-                        <a href="#"><span class="fa fa-paper-plane mr-1"></span> geraldsgelato@email.com</a>
-                        <a href="../index.jsp"><span class="fa fa-long-arrow-right mr-1"></span> Gerald's Gelato Homepage</a>
-                    </p>
-                </div>
-                <div class="col-md-6 d-flex justify-content-md-end">
-                    <div class="social-media mr-4">
-                        <p class="mb-0 d-flex">
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-                            <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-                        </p>
-                    </div>
-                    <div class="reg">
-                        <form action="../UserLogout" method="POST">
-                            <button type="submit"><span class="mr-2">Logout</span></button>
-                        </form>
-                    </div>
-                </div>
+            <h5>Hi <%=user.getUsername() %>, Welcome back.</h5>
+            <div class="reg">
+                        <p class="mb-0"><a href="../index.jsp"><span class="fa fa-long-arrow-right mr-1"></span> Gerald's Gelato Homepage</a></p>
             </div>
         </div>
-    </div>
          <section class="ftco-section">
           <div class="container">
             <div class="row justify-content-center mb-5">

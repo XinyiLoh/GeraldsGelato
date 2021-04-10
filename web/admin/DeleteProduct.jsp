@@ -4,17 +4,22 @@
     Author     : ASUS
 --%>
 
-<%@page import="java.util.ArrayList"%>
 <%@page import="dataAccess.icecreamDA"%>
 <%@page import="domain.IceCream"%>
 <%  //Declarations
-    ArrayList<IceCream> displayProduct = new ArrayList<IceCream>();
     icecreamDA da = new icecreamDA();
     String ProductID = request.getParameter("ID");
     IceCream iceCream = da.getIceCream(ProductID);
     
-    //Database Access
-    displayProduct = da.selectAllIceCream();
+    if(request.getParameter("submit") != null){
+        da.deleteRecord(ProductID);
+%>
+<script>
+        alert('Product detail deleted seccessfully.');
+        window.location.href='ProductDisplay.jsp';
+</script>
+<%
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -24,13 +29,12 @@
     </head>
     <body>
         <h2>Product Detail</h2>
-        <form>
+        <form action="DeleteProduct.jsp">
             <table border="1" cellpadding="5">
-                
                 <img src="<%= iceCream.getIceCreamImage() %>" alt="IceCream" width="200" height="300">
                 <tr>               
                     <td>ID</td>
-                    <td><input type="text" name="id" value="<%= iceCream.getIcecreamID() %>" readonly></td>
+                    <td><input type="text" name="ID" value="<%= iceCream.getIcecreamID() %>" readonly></td>
                 </tr>
                 <tr>               
                     <td>Name</td>
@@ -65,6 +69,10 @@
                     <td><textarea cols="40" rows="7" name="ingredients" readonly><%= iceCream.getIceCreamIngredients() %></textarea></td>
                 </tr>
             </table>
+                <p>Note: Do you confirm Delete This Record?</p>
+                
+                <a href="ProductDisplay.jsp"><button type="button" name="cancel">Cancel</button></a>
+                <button type="submit" name="submit">Delete</button>
         </form>
     </body>
 </html>
