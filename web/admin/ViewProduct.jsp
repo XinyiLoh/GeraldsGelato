@@ -8,16 +8,48 @@
 <%@page import="dataAccess.icecreamDA"%>
 <%@page import="domain.IceCream"%>
 <!-- Functions -->
-<%  //Declarations
-    ArrayList<IceCream> displayProduct = new ArrayList<IceCream>();
-    icecreamDA da = new icecreamDA();
-    String ProductID = request.getParameter("ID");
-    IceCream iceCream = da.getIceCream(ProductID);
-    
-    //Database Access
-    displayProduct = da.selectAllIceCream();
-%>
 <!DOCTYPE html>
+<%  //Declarations
+    icecreamDA da = new icecreamDA();
+    String productID = request.getParameter("ID");
+    IceCream ic = da.getIceCream(productID);
+    
+    boolean error = false;
+
+    if(request.getParameter("submit") != null){
+        
+        String name = request.getParameter("name");
+        double price = Double.parseDouble(request.getParameter("price"));
+        String desc = request.getParameter("description");
+        int rating = Integer.parseInt(request.getParameter("rating"));
+        String image = request.getParameter("image");
+        String type = request.getParameter("type");
+        int available = Integer.parseInt(request.getParameter("available"));
+        String detail = request.getParameter("detail");
+        String ingredients = request.getParameter("ingredients");
+        
+        IceCream update = new IceCream(productID, name, price, desc, rating, image, type, available, detail, ingredients);
+        
+        if(productID.isEmpty() || name.isEmpty() || desc.isEmpty() || image.isEmpty() || type.isEmpty() || detail.isEmpty() || ingredients.isEmpty() ){
+            out.println("<font color=red>Please fill in the empty field.</font>");
+            error = true;
+        }else if(rating > 10 || rating < 0){
+            out.println("<font color=red>Please enter the correct rating value that not more than 10 and less than 0.</font>");
+            error = true;
+        }
+        
+        if(!error){
+            da.updateRecord(update);
+%>
+<script>
+        alert('Product detail added seccessfully.');
+        window.location.href='ProductDisplay.jsp';
+</script>
+<%
+        }
+    }
+%>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,65 +57,52 @@
     </head>
     <body>
         <h2>Product Detail</h2>
-        <form>
+        <form action="ViewProduct.jsp">
             <table border="1" cellpadding="5">
                 
                 <tr>               
                     <td>ID</td>
-                    <td><input type="text" name="id" value="<%= iceCream.getIcecreamID() %>" readonly=""></td>
+                    <td><input type="text" name="id" value="<%= ic.getIcecreamID() %>" readonly=""></td>
                 </tr>
                 <tr>               
                     <td>Name</td>
-                    <td><input type="text" name="name" value="<%= iceCream.getIceCreamName() %>"></td>
+                    <td><input type="text" name="name" value="<%= ic.getIceCreamName() %>"></td>
                 </tr>
                 <tr>               
                     <td>Price</td>
-                    <td><input type="text" name="price" value="<%= iceCream.getIceCreamPrice() %>"></td>
+                    <td><input type="number" name="price" step="0.01" value="<%= ic.getIceCreamPrice() %>"></td>
                 </tr>
                 <tr>               
                     <td>Description</td>
-                    <td><textarea cols="40" rows="7" name="description"><%= iceCream.getIceCreamDescription() %></textarea></td>
+                    <td><textarea cols="40" rows="7" name="description"><%= ic.getIceCreamDescription() %></textarea></td>
                 </tr>
                 <tr>               
                     <td>Rating</td>
-                    <td><select name="rating">
-                            <% 
-                                for (int i = 0; i <= 10; i++) {
-                                    if(i == iceCream.getIceCreamRating()){
-                            %>
-                                        <option value ="<%= i %>" selected=""><%= i %></option>
-                            <%
-                                    }
-                                    else{
-                            %>
-                                        <option value ="<%= i %>"><%= i %></option>
-                            <%
-                                    }
-                                }
-                            %>
-                    </select></td>
+                    <td><input type="number" name="rating" value="<%= ic.getIceCreamRating()%>" min="0" max="10" maxlength="2"></td>
                 </tr>
                 <tr>               
                     <td>Image</td>
-                    <td><input type="file" name="image"></td>
+                    <td><input type="text" name="image" value="<%= ic.getIceCreamImage()%>"></td>
                 </tr>
                 <tr>               
                     <td>Type</td>
-                    <td><input type="text" name="type" value="<%= iceCream.getIceCreamType() %>"></td>
+                    <td><input type="text" name="type" value="<%= ic.getIceCreamType() %>"></td>
                 </tr>
                 <tr>               
                     <td>Available</td>
-                    <td><input type="text" name="available" value="<%= iceCream.getIceCreamAvailable() %>"></td>
+                    <td><input type="number" name="available" value="<%= ic.getIceCreamAvailable() %>"></td>
                 </tr>
                 <tr>               
                     <td>Detail</td>
-                    <td><textarea cols="40" rows="7" name="detail"><%= iceCream.getIceCreamLongDesc() %></textarea></td>
+                    <td><textarea cols="40" rows="7" name="detail"><%= ic.getIceCreamLongDesc() %></textarea></td>
                 </tr>
                 <tr>               
                     <td>Ingredients</td>
-                    <td><textarea cols="40" rows="7" name="ingredients"><%= iceCream.getIceCreamIngredients() %></textarea></td>
+                    <td><textarea cols="40" rows="7" name="ingredients"><%= ic.getIceCreamIngredients() %></textarea></td>
                 </tr>
             </table>
+            <button type="reset" name="reset">Reset</button>
+            <button type="submit" name="submit">Update</button>
         </form>
         
         

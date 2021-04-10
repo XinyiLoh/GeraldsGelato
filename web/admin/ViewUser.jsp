@@ -5,7 +5,6 @@
 --%>
 
 <%@page import="dataAccess.userDA"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="domain.User"%>
 <%  //Declarations
     userDA da = new userDA();
