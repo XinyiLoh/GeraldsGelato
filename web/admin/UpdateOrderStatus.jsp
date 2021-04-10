@@ -7,15 +7,18 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="dataAccess.paymentDA"%>
 <%@page import="domain.Payment"%>
-<%@page import="java.util.ArrayList"%>
 
 <!-- Functions -->
 <%  //Declarations
-    ArrayList<Payment> displayPayment = new ArrayList<Payment>();
     paymentDA da = new paymentDA();
-
-    //Database Access
-    displayPayment = da.selectAllPayment();
+    String payment = request.getParameter("status");
+    Payment pay = da.getPaymentId(payment);
+    
+    //if(request.getParameter("orderStatus") != null){
+        //String packaging= request.getParameter("orderStatus");
+        //da.updateOrderStatusRecord(packaging,payment);
+    //}
+    
 %>
 
 <!DOCTYPE html>
@@ -26,27 +29,24 @@
     </head>
     
     <body style="background-color: #CAE9F5;">
-        
-        
-                
+                 
        <table style="background-color: #F0F8FF" border="5" cellpadding="5" >
            
            <style>
                
                 table{
                     width: 100%
+                        
                 }
         
-                th{
+                th, button{
                     padding: 8px;
-
-                    text-align: center; 
 
             </style>
             
             <h1><b><u><center>Update Order Status</center></u></b></h1>
             
-            <a href="SalesRec.jsp"><button style="margin-left: 90%" size="100%" type="button">Cancel</button></a><br/><br/>
+            <a href="SalesRec.jsp"><button style="margin-left: 95%" size="100%" type="button">Cancel</button></a><br/><br/>
             
             <tr>
                 <th>Payment ID</th>
@@ -56,26 +56,37 @@
            
             </tr>
       
-            <% 
-            for (int i = 0; i < displayPayment.size(); i++){
-            %>
-            
-            <tr>
-                <td><%= displayPayment.get(i).getPaymentId() %></td>
-                <td><%= displayPayment.get(i).getCustId() %></td>
-                <td><%= displayPayment.get(i).getOrderStatus() %></td>
-                <td><button name="submit" value="packaging" class="btn btn-warning">packaging</button> </td>
-                <td><button name="submit" value="shipping" class="btn btn-warning">shipping</button></td>
-                <td><button name="submit" value="delivered" class="btn btn-warning">delivered</button></td>
-                
+            <tr> 
+               <td><%= payment %></td>
+               <td><%= pay.getCustId() %></td>
+               <td><%= pay.getOrderStatus() %></td>
+               <td><form method="GET" action="../OrderStatus">
+                       <input type="hidden" name="id" value='<%=request.getParameter("status")%>'>
+              <input type="submit" name="orderstatus" value="packaging">
+                   </form>
+               </td>
+               <td>
+              <form method="GET" action="../OrderStatus">
+                       <input type="hidden" name="id" value='<%=request.getParameter("status")%>'>
+              <input type="submit" name="orderstatus" value="shipping">
+                   </form>
+               </td>
+               <td>
+              <form method="GET" action="../OrderStatus">
+                       <input type="hidden" name="id" value='<%=request.getParameter("status")%>'>
+              <input type="submit" name="orderstatus" value="delivered">
+                   </form>
+               
+               </td>
+           
+                            
+     
             </tr>
-            
-            <%
-            }
-            %>
          
        </table> 
         
+       </form>
+
     </body>
     
 </html>
