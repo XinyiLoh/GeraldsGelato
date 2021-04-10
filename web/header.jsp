@@ -75,15 +75,8 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="index.jsp" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="aboutUs.jsp" class="nav-link">About</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ice Cream</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="icecream.jsp">Flavor</a>
-                            <a class="dropdown-item" href="cart.jsp">Cart</a>
-                            <a class="dropdown-item" href="#">Checkout</a>
-                        </div>
-                    </li>
-
+                    <li class="nav-item"><a href="icecream.jsp" class="nav-link">Ice Cream</a></li>
+                    <li class="nav-item"><a href="OrderTracking.jsp" class="nav-link">Track Your Order</a></li>
                     <li class="nav-item"><a href="contact.jsp" class="nav-link">Contact</a></li>
                 </ul>
             </div>
