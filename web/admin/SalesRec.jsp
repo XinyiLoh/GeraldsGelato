@@ -86,7 +86,7 @@
                 <td><%= displayPayment.get(i).getPaymentId() %></td>
                 <td><%= displayPayment.get(i).getCustId() %></td>
                 <td><%= displayPayment.get(i).getPaymentDate() %></td>
-                <td><%= displayPayment.get(i).getPaymentAmount() %></td>
+                <td>RM <%= displayPayment.get(i).getPaymentAmount() %></td>
                 <td><%= displayPayment.get(i).getOrderStatus() %></td> 
                 <td><a href="UpdateOrderStatus.jsp?status=<%= displayPayment.get(i).getPaymentId() %>">Update Order Status</a></td>
                 
