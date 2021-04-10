@@ -162,6 +162,61 @@ ol, ul {
     </style>
 
 <section class="ftco-section">
+    <!-- credit card info-->
+               <div class="row justify-content-center">
+                            <div class="col-xl-10 ftco-animate">
+                                 <h3 class="mb-4 billing-heading">Payment Details</h3>
+                                                 <div class="row align-items-end">
+                                                 <div class="w-100"></div>
+                                          <div class="form-group">
+                                <div class="col-md-auto" required><strong>Card Type:</strong></div>
+                                <div class="col-md-12">
+                                    <select id="CreditCardType" name="payMethod" class="form-control" required>
+                                        <option value="visa">Visa</option>
+                                        <option value="mastercard">MasterCard</option>
+                                    </select>
+                                </div>
+                            </div>
+                                                 <div class="w-100"></div>
+                                 <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="cardnumber" class="text-capitalize" required>card number</label>
+                                    <input type="text" class="form-control" maxlength="19" name="cardNo" placeholder="XXXX XXXX XXXX XXXX" required/>
+                                    <!--pattern="^[0-9].{15,}"--> 
+                                        </div>
+                                          </div>
+                                        <div class="col-md-5">
+                                <div class="form-group">
+                                    <label for="cardnumber" class="text-capitalize" required>Expiration Date</label>
+                                    <input type="text" class="form-control" name="expDate" placeholder="XX/XXXX" maxlength="7" required/>
+                                    <!--pattern="^(0[1-9]|1[0-2])\/?([0-9]{4})$"--> 
+                                        </div>
+                                          </div>
+                                        <div class="col-md-2">
+                                        <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" class="form-control" name="cvv" maxlength="3" placeholder="XXX" required>
+                                        <!--pattern="^[0-9]{3, 4}$"-->
+                                        </div>
+                                        </div>
+            <div class="w-100"></div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <span>Pay secure using your credit card.</span>
+                </div>
+                <div class="col-md-12">
+                    <ul class="cards">
+                        <li class="visa hand">Visa</li>
+                        <li class="mastercard hand">MasterCard</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            </div></div></div>
+    
+    <center><hr style="width:90%;margin: 5% 0"></center>
+                    
+     
     <form action="Checkout" class="billing-form" method="post">
     <div class="container">
             <div class="row justify-content-center">
@@ -206,46 +261,45 @@ ol, ul {
                             </div>
                           </div>
                         </div>
-                      <div class="w-100"></div>
-                      <div class="col-md-6">
-                      <div class="form-group">
-                      <label for="streetaddress">Street Address</label>
-                      <input type="text" class="form-control" name="streetAddress" placeholder="House number and street name" required>
-                      </div>
-                      </div>
-                      <div class="col-md-6">
-                      <div class="form-group">
-                          <input type="text" class="form-control" name="unitAddress" placeholder="Appartment, suite, unit etc: (optional)">
-                      </div>
-                      </div>
-                      <div class="w-100"></div>
-                      <div class="col-md-6">
-                      <div class="form-group">
-                      <label for="postcodezip">Postcode</label>
-                      <input type="text" class="form-control" name="postcode" placeholder="Enter your postcode" maxlength="5" required>
-                      </div>
-                      </div>
-                      <div class="col-md-6">
-                      <div class="form-group">
-                      <label for="towncity">City</label>
-                      <input type="text" class="form-control" name="city" placeholder="Enter your city" required>
-                      </div>
-                      </div>
-                      <div class="w-100"></div>
-                      <div class="col-md-6">
-                      <div class="form-group">
-                      <label for="phone">Phone</label>
-                      <input type="phone" class="form-control" name="phone" placeholder="Enter your phone number" required>
-                      </div>
-                      </div>
-                      <div class="col-md-6">
-                      <div class="form-group">
-                      <label for="emailaddress">Email Address</label>
-                      <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
-                      </div>
-                      </div>
-                      <div class="w-100"></div>
-                      </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="streetaddress">Street Address</label>
+                        <input type="text" class="form-control" name="streetAddress" placeholder="House number and street name" required>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="unitAddress" placeholder="Appartment, suite, unit etc: (optional)">
+                        </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="postcodezip">Postcode</label>
+                        <input type="text" class="form-control" name="postcode" placeholder="Enter your postcode" maxlength="5" required>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="towncity">City</label>
+                        <input type="text" class="form-control" name="city" placeholder="Enter your city" required>
+                        </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="phone" class="form-control" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                        <label for="emailaddress">Email Address</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter your email address" required>
+                        </div></div>
+                        <div class="w-100"></div>
+                        </div>
                 
                 <%
                     for(int i=0;i<cartList.size();i++){
@@ -261,84 +315,16 @@ ol, ul {
                                 <span>Total &emsp;&emsp;&emsp;<%= priceFormatter.format(payAmt) %></span>
                                 <span><input type="hidden" name="totalPay" value="<%= payAmt %>"/></span>
                             </p>
-                        </div>
-                     </div>
-              </div>
-                            
-            </div> 
-          </div>
-          </div>
-
-                <hr style="width:90%;margin: 5% 0">
-                    <div class="container"  style="height: 50%">
-                <div class="col-xl-10 ftco-animate">
-     
-          <!-- credit card info-->
-               <div class="row justify-content-center">
-                            <div class="col-xl-10 ftco-animate">
-                                 <h3 class="mb-4 billing-heading">Payment Details</h3>
-                                                 <div class="row align-items-end">
-                                                 <div class="w-100"></div>
-                                          <div class="form-group">
-                                <div class="col-md-auto" required><strong>Card Type:</strong></div>
-                                <div class="col-md-12">
-                                    <select id="CreditCardType" name="payMethod" class="form-control" required>
-                                        <option value="visa">Visa</option>
-                                        <option value="mastercard">MasterCard</option>
-                                    </select>
-                                </div>
-                            </div>
-                                                 <div class="w-100"></div>
-                                 <div class="col-md-5">
-                                <div class="form-group">
-                                    <label for="cardnumber" class="text-capitalize" required>card number</label>
-                                    <input type="text" class="form-control" maxlength="19" name="cardNo" placeholder="1234 4567 5869 1234" pattern="^[0-9].{15,}" required/>
-                                        </div>
-                                          </div>
-                                        <div class="col-md-5">
-                                <div class="form-group">
-                                    <label for="cardnumber" class="text-capitalize" required>Expiration Date</label>
-                                    <input type="text" class="form-control" name="expDate" placeholder="04/2021" pattern="^(0[1-9]|1[0-2])\/?([0-9]{4})$" required/>
-                                        </div>
-                                          </div>
-                                        <div class="col-md-2">
-                                        <div class="form-group">
-                                        <label for="cvv">CVV</label>
-                                        <input type="text" class="form-control" name="cvv" maxlength="3" placeholder="123" pattern="^[0-9]{3, 4}$"required>
-                                        </div>
-                                        </div>
-            <div class="w-100"></div>
-            <div class="form-group">
-                <div class="col-md-12">
-                    <span>Pay secure using your credit card.</span>
-                </div>
-                <div class="col-md-12">
-                    <ul class="cards">
-                        <li class="visa hand">Visa</li>
-                        <li class="mastercard hand">MasterCard</li>
-                    </ul>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <div class="w-100"></div>
-            <div class="col-md-12">
-                <div class="form-group mt-4">
-                    
-                    <div id="form-footer">
-                        <p>By placing your order, you agree to our <a href="#">privacy notice</a> & <a href="#">terms of use</a>.
-                                                </div>
-                    <div class="btn btn-primary py-1 px-4">
-                        <input type="submit" value="place your order" class="text-capitalize btn btn-primary btn-block p-3">
-                    </div>
-                    </div>
-                    </div>           
-                   </div>
-                    </div>
-                                                 
-                         </div>
-          <!-- End -->
-        </div>
-        </div></form></section>
+                        </div></div></div>
+                            <div class="form-group mt-4">
+                            <div id="form-footer">
+                                <p>By placing your order, you agree to our <a href="#">privacy notice</a> & <a href="#">terms of use</a>.
+                                                        </div>
+                            <div class="btn btn-primary py-1 px-4">
+                                <input type="submit" value="place your order" class="text-capitalize btn btn-primary btn-block p-3">
+                            </div></div>
+      </div> </div></div>
+    </form></section>
 
         <!-- loader -->
         <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>

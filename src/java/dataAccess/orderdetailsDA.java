@@ -35,11 +35,12 @@ public class orderdetailsDA {
         createConnection();
         try {
             
-            String sqlInsertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?)";
+            String sqlInsertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sqlInsertStr);
-            stmt.setString(1, orderDetails.getPayId());
-            stmt.setString(2, orderDetails.getProdId());
-            stmt.setInt(3, orderDetails.getQuantity());
+            stmt.setString(1, orderDetails.getId());
+            stmt.setInt(2, orderDetails.getQuantity());
+            stmt.setString(3, orderDetails.getPayId());
+            stmt.setString(4, orderDetails.getProdId());
 
             stmt.executeUpdate();
             
@@ -59,7 +60,7 @@ public class orderdetailsDA {
             stmt = conn.prepareStatement(sqlQueryStr);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                orderDetailsList.add(new OrderDetails(rs.getString(1), rs.getString(2), rs.getInt(3)));
+                orderDetailsList.add(new OrderDetails(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
             }
         } catch (SQLException ex) {
             ex.getMessage();
