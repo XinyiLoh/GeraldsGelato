@@ -48,10 +48,29 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add User</title>
     </head>
-    <body>
-        <h2>User Detail</h2>
+    <body style="background-color: #ff3333;">
+        <h2><u><b>User Detail</b></u></h2>
         <form action="AddUser.jsp">
-            <table border="1" cellpadding="5">
+            <table style="background-color: snow" border="5" cellpadding="5">
+                
+                <style>
+               
+                table{
+                    width: 100%;
+                    
+                }
+        
+                th{
+                    padding: 8px;
+
+                    text-align: center; 
+                }
+                
+                input{
+                    width: 95%;
+                }
+                            
+            </style>
                 
                 <tr>               
                     <td>Username</td>
@@ -70,7 +89,9 @@
                     <td><input type="text" name="role"></td>
                 </tr>
             </table>
-            <button type="reset" name="reset">Reset</button>
+            <br/>
+            <a href="UserDisplay.jsp"><button type="button">Cancel</button></a>&nbsp;&nbsp;&nbsp;
+            <button type="reset" name="reset">Reset</button>&nbsp;&nbsp;&nbsp;
             <button type="submit" name="submit">Add</button>
             
         </form>

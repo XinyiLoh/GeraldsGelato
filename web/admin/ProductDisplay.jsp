@@ -34,16 +34,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Product List</title>
     </head>
-    <body>
-        <h2>List of Products</h2>
+    <body style="background-color: #ff3333;">
+        <h2><u><b>List of Products</b></u></h2>
         <form>
             <input type="text" name="search" placeholder="Search Using Product ID.">
             <button type="submit" name="submit" value="search">Search</button>
         </form><br/>
-        <table border="1" cellpadding="5">
+         <table style="background-color: snow" border="5" cellpadding="5">
+             
+             <style>
+               
+                table{
+                    width: 100%;
+                    
+                }
+        
+                th{
+                    padding: 8px;
+
+                    text-align: center; 
+                }
+                         
+            </style>
             
             <a href="AddProduct.jsp"><button type="button">Add Product</button></a><br/><br/>
-            
+            <a href="adminHome.jsp"><button style="margin-left: 95%" size="100%" type="button">Go Back</button></a><br/><br/>
+
         <% 
             if(request.getParameter("submit") == null){
         %>  
@@ -94,11 +110,16 @@
                 <td><a href="ViewProduct.jsp?ID=<%= icecream.getIcecreamID() %>">View</a></td>
                 <td><a href="DeleteProduct.jsp?ID=<%= icecream.getIcecreamID() %>">Delete</a></td>
             </tr>
+            
+            </table>
+            
         <%
             }
             else{
                 out.println("No Such Product.");
             }
-        %>    
+        %> 
+        
+       
     </body>
 </html>

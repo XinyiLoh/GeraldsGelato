@@ -27,10 +27,33 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Delete User</title>
     </head>
-    <body>
-        <h2>User Detail</h2>
+    <body style="background-color: #ff3333;">
+        <h2><b><u>User Detail</u></b></h2>
         <form action="DeleteUser.jsp">
-            <table border="1" cellpadding="5">
+            <table style="background-color: snow" border="5" cellpadding="5">
+                
+                <style>
+               
+                table{
+                    width: 100%;
+                }
+        
+                th{
+                    padding: 8px;
+
+                    text-align: center; 
+                }
+                
+                textarea{
+                    width: 98%;
+                }
+                
+                input{
+                    width: 90%;
+                }
+                            
+            </style>
+                
                 <tr>               
                     <td>Username</td>
                     <td><input type="text" name="username" value="<%= user.getUsername() %>" readonly></td>
@@ -48,9 +71,9 @@
                     <td><input type="text" name="role" value="<%= user.getRole() %>" readonly></td>
                 </tr>
             </table>
-                <p>Note: Do you confirm Delete This Record?</p>
-                
-                <a href="UserDisplay.jsp"><button type="button" name="cancel">Cancel</button></a>
+                <p><u>Note: Do you confirm to Delete This Record?</u></p>
+                <br/>
+                <a href="UserDisplay.jsp"><button type="button" name="cancel">Cancel</button></a>&nbsp;&nbsp;&nbsp;
                 <button type="submit" name="submit">Delete</button>
         </form>
     </body>

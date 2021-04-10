@@ -48,16 +48,16 @@
         </style>
     </head>
     
-    <body style="background-color: #CAE9F5;">
+    <body style="background-color: #ff3333;">
         
-       <table style="background-color: #F0F8FF" border="5" cellpadding="5" class="table table-striped">
+       <table style="background-color: snow" border="5" cellpadding="5" class="table table-striped">
            
             <h1><b><u><center>Customer Record</center></u></b></h1>
             
             <form>
-            <input type="text" name="search" placeholder="Search Using Customer ID.">
+            <input type="text" name="search" placeholder="Search Using Customer ID.">&nbsp;&nbsp;
             <button type="submit" name="submit" value="search">Search</button>
-            </form><br/>
+            </form><br/><br/>
                    
         <% 
             if(request.getParameter("submit") == null){
@@ -141,6 +141,9 @@
             }
         %>       
        </table> 
+       
+       <br/>
+            <a href="adminHome.jsp"><button style="margin-left: 95%" size="100%" type="button">Go Back</button></a><br/><br/>
 
     </body>
 </html>

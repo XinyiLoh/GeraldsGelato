@@ -60,10 +60,33 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View User</title>
     </head>
-    <body>
+    <body style="background-color: #ff3333;">
         <h2>User Detail</h2>
         <form action="ViewUser.jsp" method="POST">
-            <table border="1" cellpadding="5">
+            <table style="background-color: snow" border="5" cellpadding="5">
+                
+                <style>
+               
+                table{
+                    width: 100%;
+                }
+        
+                th{
+                    padding: 8px;
+
+                    text-align: center; 
+                }
+                
+                textarea{
+                    width: 98%;
+                }
+                
+                input{
+                    width: 90%;
+                }
+                            
+            </style>
+                
                 <tr>               
                     <td>Username</td>
                     <td><input type="text" name="username" value="<%= user.getUsername() %>" readonly></td>
@@ -82,7 +105,9 @@
                 </tr>
                 
             </table>
-                <button type="reset" name="reset">Reset</button>
+                <br/>
+                <a href="UserDisplay.jsp"><button type="button">Cancel</button></a>&nbsp;&nbsp;&nbsp;
+                <button type="reset" name="reset">Reset</button> &nbsp;&nbsp;&nbsp;
                 <button type="submit" name="submit">Update</button>
         </form>
     </body>

@@ -27,10 +27,33 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <h2>Product Detail</h2>
+    <body style="background-color: #ff3333;">
+        <h2><b><u>Product Detail</u></b></h2>
         <form action="DeleteProduct.jsp">
-            <table border="1" cellpadding="5">
+            <table style="background-color: snow" border="5" cellpadding="5">
+                
+                <style>
+               
+                table{
+                    width: 100%;
+                }
+        
+                th{
+                    padding: 8px;
+
+                    text-align: center; 
+                }
+                
+                textarea{
+                    width: 98%;
+                }
+                
+                input{
+                    width: 90%;
+                }
+                            
+            </style>
+                
                 <img src="<%= iceCream.getIceCreamImage() %>" alt="IceCream" width="200" height="300">
                 <tr>               
                     <td>ID</td>
@@ -69,9 +92,9 @@
                     <td><textarea cols="40" rows="7" name="ingredients" readonly><%= iceCream.getIceCreamIngredients() %></textarea></td>
                 </tr>
             </table>
-                <p>Note: Do you confirm Delete This Record?</p>
-                
-                <a href="ProductDisplay.jsp"><button type="button" name="cancel">Cancel</button></a>
+                <p><u>Note: Do you confirm to Delete This Record?</u></p>
+                <br/>
+                <a href="ProductDisplay.jsp"><button type="button" name="cancel">Cancel</button></a>&nbsp;&nbsp;&nbsp;
                 <button type="submit" name="submit">Delete</button>
         </form>
     </body>

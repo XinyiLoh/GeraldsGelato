@@ -67,7 +67,7 @@
             <div class="row d-flex">
               <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
                     <div class="blog-entry d-flex">
-                            <a href="blog-single.html" class="block-20 img" style="background-image: url('../image/adminStaff.jpg');">
+                            <a href="UserDisplay.jsp" class="block-20 img" style="background-image: url('../image/adminStaff.jpg');">
                   </a>
                   <div class="text p-4 bg-light">
                     <h3 class="heading mb-3"><a href="#">Maintain Staffs</a></h3>
@@ -77,7 +77,7 @@
               </div>
               <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
                     <div class="blog-entry d-flex">
-                            <a href="blog-single.html" class="block-20 img" style="background-image: url('../image/adminProd.jpg');">
+                            <a href="ProductDisplay.jsp" class="block-20 img" style="background-image: url('../image/adminProd.jpg');">
                   </a>
                   <div class="text p-4 bg-light">
                     <h3 class="heading mb-3"><a href="#">Maintain Products</a></h3>
@@ -87,7 +87,7 @@
               </div>
               <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
                     <div class="blog-entry d-flex">
-                            <a href="blog-single.html" class="block-20 img" style="background-image: url('../image/adminSales.jpg');">
+                            <a href="SalesRec.jsp" class="block-20 img" style="background-image: url('../image/adminSales.jpg');">
                   </a>
                   <div class="text p-4 bg-light">
                     <h3 class="heading mb-3"><a href="#">Sales Records</a></h3>
@@ -97,7 +97,7 @@
               </div>
                 <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
                     <div class="blog-entry d-flex">
-                            <a href="blog-single.html" class="block-20 img" style="background-image: url('../image/adminReport.jpg');">
+                            <a href="GenerateReport.jsp" class="block-20 img" style="background-image: url('../image/adminReport.jpg');">
                   </a>
                   <div class="text p-4 bg-light">
                     <h3 class="heading mb-3"><a href="#">Sales Report</a></h3>
@@ -107,7 +107,7 @@
               </div>
                 <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
                     <div class="blog-entry d-flex">
-                            <a href="blog-single.html" class="block-20 img" style="background-image: url('../image/adminCust.jpg');">
+                            <a href="CustomerRecord.jsp" class="block-20 img" style="background-image: url('../image/adminCust.jpg');">
                   </a>
                   <div class="text p-4 bg-light">
                     <h3 class="heading mb-3"><a href="#">Customer Records</a></h3>

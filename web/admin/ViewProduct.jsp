@@ -54,10 +54,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Product Detail</title>
     </head>
-    <body>
-        <h2>Product Detail</h2>
+    <body style="background-color: #ff3333;">
+        <h2><b><u>Product Detail</u></b></h2>
         <form action="ViewProduct.jsp">
-            <table border="1" cellpadding="5">
+            <table style="background-color: snow" border="5" cellpadding="5">
+                
+                <style>
+               
+                table{
+                    width: 100%;
+                }
+        
+                th{
+                    padding: 8px;
+
+                    text-align: center; 
+                }
+                
+                textarea{
+                    width: 98%;
+                }
+                
+                input{
+                    width: 90%;
+                }
+                            
+            </style>
                 
                 <tr>               
                     <td>ID</td>
@@ -100,7 +122,9 @@
                     <td><textarea cols="40" rows="7" name="ingredients"><%= ic.getIceCreamIngredients() %></textarea></td>
                 </tr>
             </table>
-            <button type="reset" name="reset">Reset</button>
+                <br/>
+            <a href="ProductDisplay.jsp"><button type="button">Cancel</button></a>&nbsp;&nbsp;&nbsp;
+            <button type="reset" name="reset">Reset</button>&nbsp;&nbsp;&nbsp;
             <button type="submit" name="submit" value="success">Update</button>
         </form>
         

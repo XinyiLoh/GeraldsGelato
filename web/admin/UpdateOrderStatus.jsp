@@ -28,9 +28,9 @@
         <title>Update Order Status</title>
     </head>
     
-    <body style="background-color: #CAE9F5;">
+    <body style="background-color: #ff3333;">
                  
-       <table style="background-color: #F0F8FF" border="5" cellpadding="5" >
+       <table style="background-color: snow" border="5" cellpadding="5" >
            
            <style>
                

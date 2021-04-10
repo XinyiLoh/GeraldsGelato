@@ -32,11 +32,11 @@
         <title>Generate Report</title>
     </head>
     
-    <body style="background-color: #CAE9F5;">
+    <body style="background-color: #ff3333;">
         
         
                 
-       <table style="background-color: #F0F8FF" border="5" cellpadding="5" >
+       <table style="background-color: snow" border="5" cellpadding="5" >
            
            <style>
                
@@ -53,7 +53,7 @@
             </style>
             
             <h1><b><u><center>Report</center></u></b></h1>
-            <h3><b><center>until : <%= (new java.util.Date()).toLocaleString()%></center></b></h3>
+            <h3><u><b><center>until : <%= (new java.util.Date()).toLocaleString()%></center></b></u></h3>
                         
             <tr>
                 <th>Payment ID</th>
@@ -95,6 +95,8 @@
                 <span><input type="hidden" name="totalPaymentAmount" value="<%= totalPaymentAmount %>"/></span>
                 
             </table>
+                <br/>
+                 <a href="adminHome.jsp"><button style="margin-left: 95%" size="100%" type="button">Go Back</button></a><br/><br/>
         
     </body>
     
