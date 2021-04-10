@@ -11,13 +11,13 @@ import java.util.ArrayList;
  */
 public class customerDA {
 
-    private String host = "jdbc:derby://localhost:1527/icecreamdb";
-    private String user = "nbuser";
-    private String password = "nbuser";
-    private String tableName = "customer";
+    private static String host = "jdbc:derby://localhost:1527/icecreamdb";
+    private static String user = "nbuser";
+    private static String password = "nbuser";
+    private static String tableName = "customer";
     private String selectAllQuery = "SELECT * FROM " + tableName;
-    private Connection conn;
-    private PreparedStatement stmt;
+    private static Connection conn;
+    private static PreparedStatement stmt;
     private ResultSet rs;
 
     public customerDA() {
@@ -44,6 +44,26 @@ public class customerDA {
         } finally {
             shutDown();
         }
+    }
+
+    public static Customer getCustomerId(String customerId) {
+
+        String queryStr = "SELECT * FROM " + tableName + " WHERE Cust_ID = ?";
+        Customer customer = null;
+        try {
+            stmt = conn.prepareStatement(queryStr);
+            stmt.setString(1, customerId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                customer = new Customer(customerId, rs.getString("firstname"), rs.getString("lastname"),
+                        rs.getString("address"), rs.getString("city"), rs.getString("state"),
+                        rs.getInt("postcode"), rs.getString("email"), rs.getString("phone"));
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        return customer;
     }
 
     private void createConnection() {
