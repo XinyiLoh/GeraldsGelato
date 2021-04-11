@@ -27,7 +27,7 @@
         } else if (userDA.getRecordByEmail(email) != null) {
             out.println("<font color=red>Email existed. Please try another email.</font>");
             error = true;
-        } else if (!role.equals("admin") || !role.equals("user")){
+        } else if (!role.equals("admin") && !role.equals("user")){
             out.println("<font color=red>Role can only be admin or user.</font>");
             error = true;
         }
