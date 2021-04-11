@@ -1,3 +1,8 @@
+/**
+ *
+ * @author Koh Hui Hui
+ */
+
 package dataAccess;
 
 import domain.Customer;
@@ -5,10 +10,6 @@ import domain.IceCream;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**
- *
- * @author Koh Hui Hui
- */
 public class customerDA {
 
     private static String host = "jdbc:derby://localhost:1527/icecreamdb";

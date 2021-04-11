@@ -1,5 +1,5 @@
 <%-- 
-    Document   : index
+    Document   : index.jsp
     Author     : Siah Xin Ying
 --%>
 

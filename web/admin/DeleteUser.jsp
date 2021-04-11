@@ -1,7 +1,6 @@
 <%-- 
     Document   : DeleteUser
-    Created on : Apr 9, 2021, 4:02:03 PM
-    Author     : ASUS
+    Author     : Gan Ji Xiang
 --%>
 
 <%@page import="dataAccess.userDA"%>

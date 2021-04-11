@@ -1,9 +1,9 @@
-package domain;
-
 /**
  *
  * @author Siah Xin Ying
  */
+
+package domain;
 
 public class Cart {
 

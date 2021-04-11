@@ -1,9 +1,10 @@
-package domain;
-
 /**
  *
  * @author Koh Hui Hui
  */
+
+package domain;
+
 public class Customer {
     private String custId;
     private String firstname;

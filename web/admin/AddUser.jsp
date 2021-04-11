@@ -1,7 +1,6 @@
 <%-- 
     Document   : AddUser
-    Created on : Apr 9, 2021, 5:02:23 PM
-    Author     : ASUS
+    Author     : Gan Ji Xiang
 --%>
 
 <%@page import="domain.User"%>

@@ -1,3 +1,8 @@
+/**
+ *
+ * @author Loh Xin Yi
+ */
+
 package Controller;
 
 import dataAccess.userDA;
@@ -14,10 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Loh Xin Yi
- */
 @WebServlet(name = "UserSignIn", urlPatterns = {"/UserSignIn"})
 public class UserSignIn extends HttpServlet {
 

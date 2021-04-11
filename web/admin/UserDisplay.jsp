@@ -1,7 +1,6 @@
 <%-- 
     Document   : UserDisplay
-    Created on : Apr 6, 2021, 4:16:20 AM
-    Author     : ASUS
+    Author     : Gan Ji Xiang
 --%>
 
 <%@page import="java.util.ArrayList"%>

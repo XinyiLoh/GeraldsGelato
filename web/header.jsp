@@ -1,3 +1,8 @@
+<%-- 
+    Document   : footer
+    Author     : Siah Xin Ying
+--%>
+
 <%@page import="dataAccess.cartDA"%>
 <%@page import="domain.Cart"%>
 <%@page import="java.util.ArrayList"%>

@@ -1,7 +1,6 @@
 <%-- 
     Document   : ViewUser
-    Created on : Apr 9, 2021, 4:01:38 PM
-    Author     : ASUS
+    Author     : Gan Ji Xiang
 --%>
 
 <%@page import="dataAccess.userDA"%>

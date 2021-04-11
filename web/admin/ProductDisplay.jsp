@@ -1,7 +1,6 @@
 <%-- 
     Document   : ProductDisplay
-    Created on : Apr 1, 2021, 11:36:56 AM
-    Author     : ASUS
+    Author     : Gan Ji Xiang
 --%>
 
 <%@page import="java.util.ArrayList"%>

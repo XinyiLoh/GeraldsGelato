@@ -1,7 +1,6 @@
 <%-- 
     Document   : ViewProduct
-    Created on : Apr 9, 2021, 8:31:53 AM
-    Author     : ASUS
+    Author     : Gan Ji Xiang
 --%>
 
 <%@page import="dataAccess.icecreamDA"%>

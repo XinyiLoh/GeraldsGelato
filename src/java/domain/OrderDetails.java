@@ -1,9 +1,10 @@
-package domain;
-
 /**
  *
  * @author Koh Hui Hui
  */
+
+package domain;
+
 public class OrderDetails {
 
     private String id;

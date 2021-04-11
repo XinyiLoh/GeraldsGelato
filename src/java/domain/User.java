@@ -1,9 +1,10 @@
-package domain;
-
 /**
  *
  * @author Loh Xin Yi
  */
+
+package domain;
+
 public class User {
 
     private String username;

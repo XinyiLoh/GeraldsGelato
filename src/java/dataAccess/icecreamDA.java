@@ -1,3 +1,8 @@
+/**
+ *
+ * @author Siah Xin Ying
+ */
+
 package dataAccess;
 
 import domain.IceCream;
@@ -5,10 +10,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Siah Xin Ying
- */
 public class icecreamDA {
 
     private final static String host = "jdbc:derby://localhost:1527/icecreamdb";

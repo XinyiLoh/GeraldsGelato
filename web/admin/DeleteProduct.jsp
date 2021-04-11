@@ -1,7 +1,6 @@
 <%-- 
     Document   : DeleteProduct
-    Created on : Apr 9, 2021, 8:33:15 AM
-    Author     : ASUS
+    Author     : Gan Ji Xiang
 --%>
 
 <%@page import="dataAccess.icecreamDA"%>

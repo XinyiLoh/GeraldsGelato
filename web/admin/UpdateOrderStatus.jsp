@@ -1,7 +1,6 @@
 <%-- 
     Document   : UpdateOrderStatus
-    Created on : Apr 10, 2021, 4:06:04 AM
-    Author     : NEC
+    Author     : Ong Yik Siang
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

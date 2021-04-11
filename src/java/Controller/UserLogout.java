@@ -1,8 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author Loh Xin Yi
  */
+
 package Controller;
 
 import java.io.IOException;
@@ -15,10 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Loh Xin Yi
- */
 @WebServlet(name = "UserLogout", urlPatterns = {"/UserLogout"})
 public class UserLogout extends HttpServlet {
 

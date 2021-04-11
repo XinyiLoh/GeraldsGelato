@@ -1,8 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author Koh Hui Hui
  */
+
 package Controller;
 
 import dataAccess.cartDA;
@@ -24,10 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author HP
- */
 @WebServlet(name = "Payment", urlPatterns = {"/Payment"})
 public class Checkout extends HttpServlet {
 

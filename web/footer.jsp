@@ -1,6 +1,6 @@
 <%-- 
     Document   : footer
-    Author     : USER
+    Author     : Siah Xin Ying
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

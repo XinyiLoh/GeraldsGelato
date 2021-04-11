@@ -1,11 +1,12 @@
-package domain;
-
-import java.sql.Date;
-
 /**
  *
  * @author Koh Hui Hui
  */
+
+package domain;
+
+import java.sql.Date;
+
 public class Payment {
     
     private String paymentId;

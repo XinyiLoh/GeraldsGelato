@@ -1,8 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author Siah Xin Ying
  */
+
 package dataAccess;
 
 import domain.Cart;
@@ -11,10 +11,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Siah Xin Ying
- */
 public class cartDA {
 
     private String host = "jdbc:derby://localhost:1527/icecreamdb";

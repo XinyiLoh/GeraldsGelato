@@ -1,7 +1,6 @@
 <%-- 
     Document   : SalesRec
-    Created on : Apr 9, 2021, 4:09:55 PM
-    Author     : NEC
+    Author     : Ong Yik Siang
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
