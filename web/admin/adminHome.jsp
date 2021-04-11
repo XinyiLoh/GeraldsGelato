@@ -41,9 +41,9 @@
         <%
         //allow access only if session exists
         if(session.getAttribute("user") == null){
-            response.sendRedirect("../UserLogin.jsp");
+           response.sendRedirect("../UserLogin.jsp");
         }else user =(User) session.getAttribute("user");
-        
+         
         if(!user.getRole().equals("admin")){
             response.sendRedirect("../Error403.html");
         }

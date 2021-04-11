@@ -38,9 +38,9 @@ public class orderdetailsDA {
             String sqlInsertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sqlInsertStr);
             stmt.setString(1, orderDetails.getId());
-            stmt.setInt(2, orderDetails.getQuantity());
-            stmt.setString(3, orderDetails.getPayId());
-            stmt.setString(4, orderDetails.getProdId());
+            stmt.setString(2, orderDetails.getPayId());
+            stmt.setString(3, orderDetails.getProdId());
+            stmt.setInt(4, orderDetails.getQuantity());
 
             stmt.executeUpdate();
 
@@ -60,7 +60,7 @@ public class orderdetailsDA {
             stmt = conn.prepareStatement(sqlQueryStr);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                orderDetailsList.add(new OrderDetails(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
+                orderDetailsList.add(new OrderDetails(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
             }
         } catch (SQLException ex) {
             ex.getMessage();
@@ -80,7 +80,7 @@ public class orderdetailsDA {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                orderDetailsList.add(new OrderDetails(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
+                orderDetailsList.add(new OrderDetails(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
             }
         } catch (SQLException ex) {
             ex.getMessage();

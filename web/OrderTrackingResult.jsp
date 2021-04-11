@@ -156,8 +156,8 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Ice Cream</th>
-                      <th scope="col">Quantity</th>
+                      <th scope="col" style="color:black">Ice Cream</th>
+                      <th scope="col" style="color:black">Quantity</th>
                     </tr>
                   </thead>
                   
@@ -169,7 +169,7 @@
                     <tr>
                       <th scope="row"><%= i+1 %></th>
                       <td><%= pdDA.getName(displayOS.get(i).getProdId()) %></td>
-                      <td><%= displayOS.get(i).getQuantity() %></td>
+                      <td><%= displayOS.get(i).getQuantity() %></td> 
                     </tr>
                     
                 <%

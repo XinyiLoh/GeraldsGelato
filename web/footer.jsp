@@ -62,7 +62,9 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Quick Link</h2>
               <ul class="list-unstyled">
-                <li><a href="admin/adminHome.jsp"><span class="fa fa-chevron-right mr-2"></span>Admin Panel</a></li>
+                <li><a href="icecream.jsp"><span class="fa fa-chevron-right mr-2"></span>Ice Cream</a></li>
+                <li><a href="cart.jsp"><span class="fa fa-chevron-right mr-2"></span>Cart</a></li>
+                <li><a href="OrderTracking.jsp"><span class="fa fa-chevron-right mr-2"></span>Order Tracking</a></li>
               </ul>
             </div>
           </div>

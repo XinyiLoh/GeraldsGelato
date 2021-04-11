@@ -4,23 +4,22 @@ package domain;
  *
  * @author Koh Hui Hui
  */
-
 public class OrderDetails {
 
-    private int quantity;
-    private String prodId;
-    private String payId;
     private String id;
+    private String payId;
+    private String prodId;
+    private int quantity;
 
     public OrderDetails() {
 
     }
 
-    public OrderDetails(String id, int quantity, String prodId, String payId) {
+    public OrderDetails(String id, String payId, String prodId, int quantity) {
         this.id = id;
-        this.quantity = quantity;
         this.payId = payId;
         this.prodId = prodId;
+        this.quantity = quantity;
     }
 
     public String getId() {
@@ -31,6 +30,14 @@ public class OrderDetails {
         this.id = id;
     }
 
+    public String getPayId() {
+        return payId;
+    }
+
+    public void setPayId(String payId) {
+        this.payId = payId;
+    }
+
     public String getProdId() {
         return prodId;
     }
@@ -39,25 +46,12 @@ public class OrderDetails {
         this.prodId = prodId;
     }
 
-    public String getPayId() {
-        return payId;
-    }
-
-    public void setPayId(String payId) {
-        this.payId = payId;
-    }
-    
     public int getQuantity() {
         return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetails{" + " quantity=" + quantity + ", prodId=" + prodId + ", payId=" + payId + '}';
     }
 
 }
