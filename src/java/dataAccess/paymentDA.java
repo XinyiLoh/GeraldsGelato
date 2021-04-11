@@ -61,7 +61,7 @@ public class paymentDA {
             stmt.setDate(3, payment.getPaymentDate());
             stmt.setString(4, payment.getPaymentMode());
             stmt.setString(5, payment.getOrderStatus());
-            stmt.setString(7, payment.getCustId());
+            stmt.setString(6, payment.getCustId());
 
             stmt.executeUpdate();
 

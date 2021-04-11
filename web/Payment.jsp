@@ -162,6 +162,7 @@ ol, ul {
     </style>
 
 <section class="ftco-section">
+        <form action="Payment" class="billing-form" method="post">
     <!-- credit card info-->
                <div class="row justify-content-center">
                             <div class="col-xl-10 ftco-animate">
@@ -169,25 +170,28 @@ ol, ul {
                                                  <div class="row align-items-end">
                                                  <div class="w-100"></div>
                                           <div class="form-group">
-                                <div class="col-md-auto" required><strong>Card Type:</strong></div>
                                 <div class="col-md-12">
-                                    <select id="CreditCardType" name="payMethod" class="form-control" required>
+                                    <label for="payMethod">Card Type: </label>
+                                    <div class="select-wrap">
+                                    <select name="payMethod" class="form-control" required>
+                                        <option value="">Choose your card type</option>
                                         <option value="visa">Visa</option>
                                         <option value="mastercard">MasterCard</option>
                                     </select>
+                                    </div>
                                 </div>
                             </div>
                                                  <div class="w-100"></div>
                                  <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="cardnumber" class="text-capitalize" required>card number</label>
-                                    <input type="text" class="form-control" maxlength="19" name="cardNo" placeholder="XXXX XXXX XXXX XXXX" required/>
+                                    <input type="text" class="form-control" minlength="19" maxlength="19" name="cardnumber" placeholder="XXXX XXXX XXXX XXXX" required/>
                                     <!--pattern="^[0-9].{15,}"--> 
                                         </div>
                                           </div>
                                         <div class="col-md-5">
                                 <div class="form-group">
-                                    <label for="cardnumber" class="text-capitalize" required>Expiration Date</label>
+                                    <label for="expDate" class="text-capitalize" required>Expiration Date</label>
                                     <input type="text" class="form-control" name="expDate" placeholder="XX/XXXX" maxlength="7" required/>
                                     <!--pattern="^(0[1-9]|1[0-2])\/?([0-9]{4})$"--> 
                                         </div>
@@ -195,7 +199,7 @@ ol, ul {
                                         <div class="col-md-2">
                                         <div class="form-group">
                                         <label for="cvv">CVV</label>
-                                        <input type="text" class="form-control" name="cvv" maxlength="3" placeholder="XXX" required>
+                                        <input type="number" class="form-control" name="cvv" max="999" placeholder="XXX" required>
                                         <!--pattern="^[0-9]{3, 4}$"-->
                                         </div>
                                         </div>
@@ -217,7 +221,6 @@ ol, ul {
     <center><hr style="width:90%;margin: 5% 0"></center>
                     
      
-    <form action="Payment" class="billing-form" method="post">
     <div class="container">
             <div class="row justify-content-center">
       <div class="col-xl-10 ftco-animate">
@@ -242,7 +245,7 @@ ol, ul {
                           <label for="state">State </label>
                             <div class="select-wrap">
                               <div class="icon"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
-                              <select name="state" id="" class="form-control" required>
+                              <select name="state"class="form-control" required>
                                   <option value="">Choose your state</option>
                                   <option value="SB">Sabah</option>
                                   <option value="SW">Sarawak</option>

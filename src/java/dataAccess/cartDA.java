@@ -131,6 +131,17 @@ public class cartDA {
             ex.printStackTrace();
         }
     }
+    
+    public void clearCart() {
+        String dltStr = "DELETE FROM Cart";
+        try {
+            stmt = conn.prepareStatement(dltStr);
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     private void createConnection() {
         try {

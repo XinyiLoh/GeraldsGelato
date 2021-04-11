@@ -15,6 +15,7 @@
 
     cartList = da.selectAllCart();
     double totalPrice = 0;
+    String redirectPg;
 %>
 
 <!DOCTYPE html>
@@ -114,7 +115,13 @@
                                 <span></span>
                             </p>
                         </div>
-                                <p class="text-center"><a href="Payment.jsp" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                                <% if(cartList.isEmpty()){
+                                    redirectPg="";
+                                    out.print("<script>alert('The cart is empty! ');</script>");
+                                }else{
+                                    redirectPg="Payment.jsp";
+                                }%>
+            <p class="text-center"><a href="<%= redirectPg %>" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
                     </div>
                 </div>
             </div>

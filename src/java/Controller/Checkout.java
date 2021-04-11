@@ -5,9 +5,11 @@
  */
 package Controller;
 
+import dataAccess.cartDA;
 import dataAccess.customerDA;
 import dataAccess.orderdetailsDA;
 import dataAccess.paymentDA;
+import domain.Cart;
 import domain.Customer;
 import domain.OrderDetails;
 import java.io.IOException;
@@ -27,7 +29,7 @@ import javax.servlet.http.HttpSession;
  * @author HP
  */
 @WebServlet(name = "Payment", urlPatterns = {"/Payment"})
-public class Payment extends HttpServlet {
+public class Checkout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -84,13 +86,22 @@ public class Payment extends HttpServlet {
         PrintWriter out=response.getWriter();
         
         ArrayList <Customer> custList=new ArrayList <Customer>();
-        ArrayList <Payment> payList=new ArrayList <Payment>();
         customerDA custDb=new customerDA();
+        custList = custDb.selectAllCustomer();
+        ArrayList <domain.Payment> payList=new ArrayList <domain.Payment>();
         paymentDA payDb=new paymentDA();
+        payList = payDb.selectAllPayment();        
+        ArrayList<Cart> cartList = new ArrayList<Cart>();
+        cartDA cartDb = new cartDA();
+        cartList = cartDb.selectAllCart();
+        ArrayList<OrderDetails> orderList = new ArrayList<OrderDetails>();
         orderdetailsDA orderDb=new orderdetailsDA();
+        orderList = orderDb.selectAllOrderDetails();
+        
         
 //        customer data
-        int custId=1;
+        String custId;
+        int cId=0;
         String firstname = request.getParameter("fName").trim();
         String lastname = request.getParameter("lName").trim();
         String streetaddress = request.getParameter("streetAddress").trim();
@@ -103,46 +114,59 @@ public class Payment extends HttpServlet {
         String address = streetaddress+", "+unitaddress;
         
 //        payment data
-        int payId=0;
+        String payId;
+        int pId=0;
         double amountPay=Double.parseDouble(request.getParameter("totalPay").trim());
         String payMethod=request.getParameter("payMethod");
         
+        String orderId;
+        int oId=0;
+        
 //        date
-//        Calendar now = Calendar.getInstance();
-//        int year = now.get(Calendar.YEAR);
-//        int month = now.get(Calendar.MONTH);
-//        int day = now.get(Calendar.DAY_OF_MONTH);
-//        String yearInString = String.valueOf(year);
-//        String monthInString = String.valueOf(month);
-//        String dayInString = String.valueOf(day);
-//        String paymentDate = dayInString+"-"+monthInString+"-"+yearInString;
-         Date paymentDate = new Date();
+        Date paymentDate = new Date();
         java.sql.Date insertPayDate = new java.sql.Date(paymentDate.getTime());
         
-//        id
-//        int custNum=custList.size();
-//        custId=custNum++;
-        String customerId="A"+custId;
+//        customer id
+         if(custList==null){
+             cId=0;
+         }else{
+             cId=custList.size();
+             cId++;
+         }
+         custId="C"+cId;
         
-//        for(int x=0;x<payList.size();x++){
-//            payList.add();
-//        }
-        
-//        int payNum=payList.size();
-//        payId=payNum++;
-        String orderId="O"+payId;
-        
-        Customer cust = new Customer(customerId, firstname, lastname, address, city, state, pcode, email, phone);
-        domain.Payment pay = new domain.Payment(orderId, amountPay, insertPayDate, payMethod, "packaging", customerId);
-        OrderDetails order = new OrderDetails();
+//         payment id
+         if(payList==null){
+             pId=0;
+         }else{
+             pId=payList.size();
+             pId++;
+         }
+         payId="P"+pId;
+         
+//         order id
+         if(orderList==null){
+             oId=0;
+         }else{
+             oId=orderList.size();
+             oId++;
+         }
+         
+        Customer cust = new Customer(custId, firstname, lastname, address, city, state, pcode, email, phone);
+        domain.Payment pay = new domain.Payment(payId, amountPay, insertPayDate, payMethod, "packaging", custId);
         
         try {
-//            custDb.addCustomer(cust);
+            custDb.addCustomer(cust);
             payDb.addRecord(pay);
-            HttpSession session = request.getSession();
-            request.setAttribute("orderID", orderId);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("SuccessOrder.jsp");
-            dispatcher.forward(request, response);
+            
+            for(int i=0;i<cartList.size();i++){
+                orderId="O"+oId;
+                OrderDetails order = new OrderDetails(orderId, payId, cartList.get(i).getId(), cartList.get(i).getQuantity());
+                orderDb.addRecord(order);
+                oId++;
+            }
+            cartDb.clearCart();
+            response.sendRedirect("SuccessOrder.jsp?orderID= " + payId);
             
         } catch (Exception ex) {
             out.print(ex.getMessage());
