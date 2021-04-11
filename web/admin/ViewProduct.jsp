@@ -41,7 +41,7 @@
             da.updateRecord(update);
 %>
 <script>
-        alert('Product detail added seccessfully.');
+        alert('Product detail updated seccessfully.');
         window.location.href='ProductDisplay.jsp';
 </script>
 <%
@@ -54,7 +54,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Product Detail</title>
     </head>
-    <body style="background-color: #ff3333;">
+    <body style="background-color: #faf02a;">
         <h2><b><u>Product Detail</u></b></h2>
         <form action="ViewProduct.jsp">
             <table style="background-color: snow" border="5" cellpadding="5">

@@ -27,7 +27,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Delete User</title>
     </head>
-    <body style="background-color: #ff3333;">
+    <body style="background-color: #288bfc;">
         <h2><b><u>User Detail</u></b></h2>
         <form action="DeleteUser.jsp">
             <table style="background-color: snow" border="5" cellpadding="5">

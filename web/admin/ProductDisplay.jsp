@@ -34,7 +34,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Product List</title>
     </head>
-    <body style="background-color: #ff3333;">
+    <body style="background-color: #faf02a;">
         <h2><u><b>List of Products</b></u></h2>
         <form>
             <input type="text" name="search" placeholder="Search Using Product ID.">

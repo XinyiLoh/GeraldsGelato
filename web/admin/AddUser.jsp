@@ -28,8 +28,10 @@
         } else if (userDA.getRecordByEmail(email) != null) {
             out.println("<font color=red>Email existed. Please try another email.</font>");
             error = true;
+        } else if (!role.equals("admin") || !role.equals("user")){
+            out.println("<font color=red>Role can only be admin or user.</font>");
+            error = true;
         }
-        
         
         if(!error){
             da.addRecord(user);
@@ -48,7 +50,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add User</title>
     </head>
-    <body style="background-color: #ff3333;">
+    <body style="background-color: #288bfc;">
         <h2><u><b>User Detail</b></u></h2>
         <form action="AddUser.jsp">
             <table style="background-color: snow" border="5" cellpadding="5">

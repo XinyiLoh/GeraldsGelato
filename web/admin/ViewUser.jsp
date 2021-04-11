@@ -41,6 +41,9 @@
                 out.println("<font color=red>Email existed. Please try another email.</font>");
                 error = true;
             }
+        } else if (!role.equals("admin") || !role.equals("user")){
+            out.println("<font color=red>Role can only be admin or user.</font>");
+            error = true;
         }
         
         if(!error){
@@ -60,7 +63,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View User</title>
     </head>
-    <body style="background-color: #ff3333;">
+    <body style="background-color: #288bfc;">
         <h2>User Detail</h2>
         <form action="ViewUser.jsp" method="POST">
             <table style="background-color: snow" border="5" cellpadding="5">

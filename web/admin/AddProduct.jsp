@@ -54,7 +54,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body style="background-color: #ff3333;">
+    <body style="background-color: #faf02a;">
         <h2><u><b>Add Product Detail</b></u></h2>
         <form action="AddProduct.jsp">
             <table style="background-color: snow"  border="5" cellpadding="5">

@@ -27,7 +27,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body style="background-color: #ff3333;">
+    <body style="background-color: #faf02a;">
         <h2><b><u>Product Detail</u></b></h2>
         <form action="DeleteProduct.jsp">
             <table style="background-color: snow" border="5" cellpadding="5">
@@ -54,7 +54,7 @@
                             
             </style>
                 
-                <img src="<%= iceCream.getIceCreamImage() %>" alt="IceCream" width="200" height="300">
+                <img src="../<%= iceCream.getIceCreamImage() %>" alt="IceCream" width="200" height="300">
                 <tr>               
                     <td>ID</td>
                     <td><input type="text" name="ID" value="<%= iceCream.getIcecreamID() %>" readonly></td>

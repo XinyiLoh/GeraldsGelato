@@ -33,7 +33,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>User List</title>
     </head>
-    <body style="background-color: #ff3333;">
+    <body style="background-color: #288bfc;">
         <h2><u><b>List of Users</b></u></h2>
         <form>
             <input type="text" name="search" placeholder="Search Using Username">
