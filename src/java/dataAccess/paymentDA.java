@@ -42,7 +42,7 @@ public class paymentDA {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                payment = new Payment(paymentId, rs.getDouble("PAYMENT_AMOUNT"), rs.getString("PAYMENT_DATE"), rs.getString("PAYMENT_MODE"), rs.getString("ORDER_STATUS"), rs.getString("CUST_ID"));
+                payment = new Payment(paymentId, rs.getDouble("PAYMENT_AMOUNT"), rs.getDate("PAYMENT_DATE"), rs.getString("PAYMENT_MODE"), rs.getString("ORDER_STATUS"), rs.getString("CUST_ID"));
             }
         } catch (SQLException ex) {
             ex.getMessage();
@@ -54,11 +54,11 @@ public class paymentDA {
         createConnection();
         try {
 
-            String sqlInsertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?, ?, ?, ?, ?)";
+            String sqlInsertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sqlInsertStr);
             stmt.setString(1, payment.getPaymentId());
             stmt.setDouble(2, payment.getPaymentAmount());
-            stmt.setString(3, payment.getPaymentDate());
+            stmt.setDate(3, payment.getPaymentDate());
             stmt.setString(4, payment.getPaymentMode());
             stmt.setString(5, payment.getOrderStatus());
             stmt.setString(7, payment.getCustId());
@@ -81,7 +81,7 @@ public class paymentDA {
             stmt = conn.prepareStatement(sqlQueryStr);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                paymentList.add(new Payment(rs.getString(1), rs.getDouble(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                paymentList.add(new Payment(rs.getString(1), rs.getDouble(2), rs.getDate(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
         } catch (SQLException ex) {
             ex.getMessage();

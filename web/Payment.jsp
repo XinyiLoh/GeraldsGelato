@@ -217,7 +217,7 @@ ol, ul {
     <center><hr style="width:90%;margin: 5% 0"></center>
                     
      
-    <form action="Checkout" class="billing-form" method="post">
+    <form action="Payment" class="billing-form" method="post">
     <div class="container">
             <div class="row justify-content-center">
       <div class="col-xl-10 ftco-animate">

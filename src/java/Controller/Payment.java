@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controller;
 
 import dataAccess.customerDA;
@@ -6,12 +10,10 @@ import dataAccess.orderdetailsDA;
 import dataAccess.paymentDA;
 import domain.Customer;
 import domain.OrderDetails;
-import domain.Payment;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,10 +24,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Koh Hui Hui
+ * @author HP
  */
-@WebServlet(urlPatterns = {"/Checkout"})
-public class Checkout extends HttpServlet {
+@WebServlet(name = "Payment", urlPatterns = {"/Payment"})
+public class Payment extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,63 +41,17 @@ public class Checkout extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        ArrayList <Customer> custList=new ArrayList <Customer>();
-        ArrayList <Payment> payList=new ArrayList <Payment>();
-        customerDA custDb=new customerDA();
-        paymentDA payDb=new paymentDA();
-        orderdetailsDA orderDb=new orderdetailsDA();
-        
-//        customer data
-        int custId=0;
-        String firstname = request.getParameter("fName").trim();
-        String lastname = request.getParameter("lName").trim();
-        String streetaddress = request.getParameter("streetAddress").trim();
-        String unitaddress = request.getParameter("unitAddress").trim();
-        String city = request.getParameter("city").trim();
-        String state = request.getParameter("state").trim();
-        String email = request.getParameter("email").trim();
-        String phone = request.getParameter("phone").trim();
-        int pcode = Integer.parseInt(request.getParameter("postcode").trim());
-        String address = streetaddress+", "+unitaddress;
-        
-//        payment data
-        int payId=0;
-        double amountPay=Double.parseDouble(request.getParameter("totalPay").trim());
-        String payMethod=request.getParameter("payMethod").trim();
-        
-//        date
-        Calendar now = Calendar.getInstance();
-        int year = now.get(Calendar.YEAR);
-        int month = now.get(Calendar.MONTH);
-        int day = now.get(Calendar.DAY_OF_MONTH);
-        String yearInString = String.valueOf(year);
-        String monthInString = String.valueOf(month);
-        String dayInString = String.valueOf(day);
-        String paymentDate = dayInString+"-"+monthInString+"-"+yearInString;
-        
-//        id
-        int custNum=custList.size();
-        custId=custNum++;
-        String customerId="A"+custId;
-        
-        int payNum=payList.size();
-        payId=payNum++;
-        String orderId="O"+payId;
-        
-        Customer cust = new Customer(customerId, firstname, lastname, address, city, state, pcode, email, phone);
-        Payment pay = new Payment(orderId, amountPay, paymentDate, payMethod, "packaging", customerId);
-        OrderDetails order = new OrderDetails();
-        
-        try {
-            custDb.addCustomer(cust);
-            payDb.addRecord(pay);
-            HttpSession session = request.getSession();
-            request.setAttribute("orderID", orderId);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("SuccessOrder.jsp");
-            dispatcher.forward(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(Checkout.class.getName()).log(Level.SEVERE, null, ex);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Payment</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Payment at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
@@ -125,7 +81,72 @@ public class Checkout extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        PrintWriter out=response.getWriter();
+        
+        ArrayList <Customer> custList=new ArrayList <Customer>();
+        ArrayList <Payment> payList=new ArrayList <Payment>();
+        customerDA custDb=new customerDA();
+        paymentDA payDb=new paymentDA();
+        orderdetailsDA orderDb=new orderdetailsDA();
+        
+//        customer data
+        int custId=1;
+        String firstname = request.getParameter("fName").trim();
+        String lastname = request.getParameter("lName").trim();
+        String streetaddress = request.getParameter("streetAddress").trim();
+        String unitaddress = request.getParameter("unitAddress").trim();
+        String city = request.getParameter("city").trim();
+        String state = request.getParameter("state").trim();
+        String email = request.getParameter("email").trim();
+        String phone = request.getParameter("phone").trim();
+        int pcode = Integer.parseInt(request.getParameter("postcode").trim());
+        String address = streetaddress+", "+unitaddress;
+        
+//        payment data
+        int payId=0;
+        double amountPay=Double.parseDouble(request.getParameter("totalPay").trim());
+        String payMethod=request.getParameter("payMethod");
+        
+//        date
+//        Calendar now = Calendar.getInstance();
+//        int year = now.get(Calendar.YEAR);
+//        int month = now.get(Calendar.MONTH);
+//        int day = now.get(Calendar.DAY_OF_MONTH);
+//        String yearInString = String.valueOf(year);
+//        String monthInString = String.valueOf(month);
+//        String dayInString = String.valueOf(day);
+//        String paymentDate = dayInString+"-"+monthInString+"-"+yearInString;
+         Date paymentDate = new Date();
+        java.sql.Date insertPayDate = new java.sql.Date(paymentDate.getTime());
+        
+//        id
+//        int custNum=custList.size();
+//        custId=custNum++;
+        String customerId="A"+custId;
+        
+//        for(int x=0;x<payList.size();x++){
+//            payList.add();
+//        }
+        
+//        int payNum=payList.size();
+//        payId=payNum++;
+        String orderId="O"+payId;
+        
+        Customer cust = new Customer(customerId, firstname, lastname, address, city, state, pcode, email, phone);
+        domain.Payment pay = new domain.Payment(orderId, amountPay, insertPayDate, payMethod, "packaging", customerId);
+        OrderDetails order = new OrderDetails();
+        
+        try {
+//            custDb.addCustomer(cust);
+            payDb.addRecord(pay);
+            HttpSession session = request.getSession();
+            request.setAttribute("orderID", orderId);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("SuccessOrder.jsp");
+            dispatcher.forward(request, response);
+            
+        } catch (Exception ex) {
+            out.print(ex.getMessage());
+        }
     }
 
     /**

@@ -1,5 +1,7 @@
 package domain;
 
+import java.sql.Date;
+
 /**
  *
  * @author Koh Hui Hui
@@ -8,7 +10,7 @@ public class Payment {
     
     private String paymentId;
     private double paymentAmount;
-    private String paymentDate;
+    private Date paymentDate;
     private String paymentMode;
     private String orderStatus;
     private String custId;
@@ -16,7 +18,7 @@ public class Payment {
     public Payment(){
     }
     
-    public Payment(String paymentId, double paymentAmount, String paymentDate, String paymentMode, String orderStatus, String custId){
+    public Payment(String paymentId, double paymentAmount, Date paymentDate, String paymentMode, String orderStatus, String custId){
         this.paymentId = paymentId;
         this.paymentAmount = paymentAmount;
         this.paymentDate = paymentDate;
@@ -42,11 +44,11 @@ public class Payment {
         this.paymentAmount = paymentAmount;
     }
     
-    public String getPaymentDate(){
+    public Date getPaymentDate(){
         return paymentDate;
     } 
     
-    public void setPaymentDate(String paymentDate){
+    public void setPaymentDate(Date paymentDate){
         this.paymentDate = paymentDate;
     }
     
