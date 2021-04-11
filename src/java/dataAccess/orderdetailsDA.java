@@ -34,7 +34,7 @@ public class orderdetailsDA {
     public void addRecord(OrderDetails orderDetails) throws SQLException {
         createConnection();
         try {
-            
+
             String sqlInsertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sqlInsertStr);
             stmt.setString(1, orderDetails.getId());
@@ -43,7 +43,7 @@ public class orderdetailsDA {
             stmt.setString(4, orderDetails.getProdId());
 
             stmt.executeUpdate();
-            
+
         } catch (SQLException ex) {
             throw ex;
         } finally {
@@ -52,13 +52,33 @@ public class orderdetailsDA {
     }
 
     public ArrayList<OrderDetails> selectAllOrderDetails() {
-         OrderDetails orderDetails = new OrderDetails();
+        OrderDetails orderDetails = new OrderDetails();
         ArrayList<OrderDetails> orderDetailsList = new ArrayList<OrderDetails>();
         String sqlQueryStr = "SELECT * from " + tableName;
 
         try {
             stmt = conn.prepareStatement(sqlQueryStr);
             ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                orderDetailsList.add(new OrderDetails(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+
+        return orderDetailsList;
+    }
+
+    public ArrayList<OrderDetails> selectOrderDetailsByPaymentID(String paymentID) {
+        OrderDetails orderDetails = new OrderDetails();
+        ArrayList<OrderDetails> orderDetailsList = new ArrayList<OrderDetails>();
+        String sqlQueryStr = "SELECT * from " + tableName + " WHERE PAYMENT_ID = ?";
+
+        try {
+            stmt = conn.prepareStatement(sqlQueryStr);
+            stmt.setString(1, paymentID);
+            ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
                 orderDetailsList.add(new OrderDetails(rs.getString(1), rs.getInt(2), rs.getString(3), rs.getString(4)));
             }
@@ -90,7 +110,7 @@ public class orderdetailsDA {
 
     public static void main(String[] args) {
         ArrayList<OrderDetails> orderDetailsList = new ArrayList<OrderDetails>();
-        orderdetailsDA orderProd=new orderdetailsDA();
+        orderdetailsDA orderProd = new orderdetailsDA();
         orderDetailsList = orderProd.selectAllOrderDetails();
         System.out.println(orderDetailsList);
     }

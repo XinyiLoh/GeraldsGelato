@@ -32,8 +32,8 @@ public class paymentDA {
         createConnection();
     }
 
-   public static Payment getPaymentId(String paymentId) {
-       
+    public static Payment getPaymentId(String paymentId) {
+
         String queryStr = "SELECT * FROM " + tableName + " WHERE PAYMENT_ID = ?";
         Payment payment = null;
         try {
@@ -53,7 +53,7 @@ public class paymentDA {
     public void addRecord(Payment payment) throws SQLException {
         createConnection();
         try {
-            
+
             String sqlInsertStr = "INSERT INTO " + tableName + " VALUES(?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sqlInsertStr);
             stmt.setString(1, payment.getPaymentId());
@@ -64,7 +64,7 @@ public class paymentDA {
             stmt.setString(7, payment.getCustId());
 
             stmt.executeUpdate();
-            
+
         } catch (SQLException ex) {
             throw ex;
         } finally {
@@ -108,8 +108,8 @@ public class paymentDA {
             ex.getMessage();
         }
     }
-    
-    public void updateOrderStatusRecord(String os,String id) {
+
+    public void updateOrderStatusRecord(String os, String id) {
         createConnection();
         try {
             String updateStr = "UPDATE " + tableName + " SET ORDER_STATUS = ? WHERE PAYMENT_ID = ?";
@@ -119,9 +119,9 @@ public class paymentDA {
             stmt.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-        } 
+        }
     }
-    
+
     public static void main(String[] args) {
         ArrayList<Payment> paymentList = new ArrayList<Payment>();
         paymentDA icda = new paymentDA();

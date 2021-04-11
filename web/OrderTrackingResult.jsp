@@ -1,11 +1,41 @@
 <%-- 
-    Document   : OrderTracking.jsp
-    Author     : Koh Hui Hui
+    Document   : OrderTrackingResult
+    Created on : Apr 11, 2021, 7:12:02 AM
+    Author     : Loh Xin Yi
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="domain.OrderDetails"%>
+<%@page import="dataAccess.orderdetailsDA"%>
+<%@page import="dataAccess.paymentDA"%>
+<%@page import="domain.Payment"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dataAccess.icecreamDA"%>
+<%@page import="domain.IceCream"%>
 
+<%  
+            
+        String orderID = request.getParameter("search");
+        Payment displayPayment = new Payment();
+        paymentDA da = new paymentDA();
+        displayPayment = da.getPaymentId(orderID);
 
+        ArrayList<OrderDetails> displayOS = new ArrayList<OrderDetails>();
+        orderdetailsDA osDA = new orderdetailsDA();
+        displayOS = osDA.selectOrderDetailsByPaymentID(orderID);
+
+        icecreamDA pdDA = new icecreamDA();
+
+        String status1 = "step";
+        String status2 = "step";
+        if(displayPayment.getOrderStatus().equals("shipping")){
+            status1 = "step active";
+        }else if(displayPayment.getOrderStatus().equals("delivered")){
+            status1 = "step active";
+            status2 = "step active"; 
+        }
+%>
+        
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -95,6 +125,7 @@
              ul {
               list-style-type: none;
             }
+            
         </style>
         
         <section class="hero-wrap hero-wrap-2" style="background-image: url('image/ATC.jpg');" data-stellar-background-ratio="0.5">
@@ -112,17 +143,45 @@
         <section class="ftco-section">
         <div class="container">
             <h3 class="mb-4 billing-heading">Order Tracking</h3>
-            <div class="row">
-                <div class="col-md-4 col-md-offset-3"> Order Number: 
-                    <form class="search-form" action="searchOrderStatus" method="POST">
-                        <div class="form-group has-feedback">
-                                <label for="search" class="sr-only">Search</label>
-                                <input type="text" class="form-control" name="search" id="search" placeholder="XXXXXXXXX">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                        </div>
-                    </form>
-                </div>
+        
+        
+            <div class="track" style="margin-top: 15%">
+                <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+                <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Packaging</span> </div>
+                <div class="<%= status1 %>"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Shipping</span> </div>
+                <div class="<%= status2 %>"> <span class="icon"> <i class="fa fa-paper-plane"></i> </span> <span class="text">Delivered</span> </div>
             </div>
+            <hr>
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Ice Cream</th>
+                      <th scope="col">Quantity</th>
+                    </tr>
+                  </thead>
+                  
+                <% 
+                    for (int i = 0; i < displayOS.size(); i++){
+                %>
+            
+                  <tbody>
+                    <tr>
+                      <th scope="row"><%= i+1 %></th>
+                      <td><%= pdDA.getName(displayOS.get(i).getProdId()) %></td>
+                      <td><%= displayOS.get(i).getQuantity() %></td>
+                    </tr>
+                    
+                <%
+                }
+                %>
+
+                  </tbody>
+                </table>
+                <hr>
+                <div class="btn-group" style="margin-top:5%">
+                    <a href="icecream.jsp" class="btn btn-primary py-3 px-4"> <i class="fa fa-chevron-left"></i> Back to shopping</a>
+                </div>
         </div>
         </section>
         
